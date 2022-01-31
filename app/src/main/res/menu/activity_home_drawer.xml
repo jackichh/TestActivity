@@ -12,6 +12,7 @@
             android:title="@string/menu_dictionaries"
             android:icon="@drawable/bookicon25"
             android:enabled="false"/>
+<!--        <item android:id="@+id/list_item"-->
 
         <item
             android:id="@+id/nav_new_dictionary"
