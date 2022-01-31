@@ -25,8 +25,7 @@ public class NewDictionaryFragment extends Fragment {
     private NewDictionaryViewModel newDictionaryViewModel;
     private FragmentNewDictionaryBinding binding;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
         newDictionaryViewModel = new ViewModelProvider(this).get(NewDictionaryViewModel.class);
@@ -42,19 +41,20 @@ public class NewDictionaryFragment extends Fragment {
             }
         });
         return root;
-
-
-    binding.fabNew.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show();
-        }
-    });
-
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initListeners();
+    }
 
+    private void initListeners() {
 
+        binding.fabNew.setOnClickListener(
+                v -> Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show()
+        );
+    }
 
     @Override
     public void onDestroyView() {
