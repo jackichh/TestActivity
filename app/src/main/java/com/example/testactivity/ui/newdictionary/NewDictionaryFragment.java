@@ -1,11 +1,13 @@
-package com.example.testactivity.ui.gallery;
+package com.example.testactivity.ui.newdictionary;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ListAdapter;
+import android.widget.ListPopupWindow;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,10 +17,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.testactivity.R;
-import com.example.testactivity.databinding.ActivityHomeBinding;
 import com.example.testactivity.databinding.FragmentNewDictionaryBinding;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewDictionaryFragment extends Fragment {
 

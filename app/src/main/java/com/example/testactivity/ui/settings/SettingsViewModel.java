@@ -1,16 +1,16 @@
-package com.example.testactivity.ui.gallery;
+package com.example.testactivity.ui.settings;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NewDictionaryViewModel extends ViewModel {
+public class SettingsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public NewDictionaryViewModel() {
+    public SettingsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Edit title of dictionary");
+        mText.setValue("This is slideshow fragment");
     }
 
     public LiveData<String> getText() {
