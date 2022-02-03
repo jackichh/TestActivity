@@ -20,24 +20,24 @@
             android:id="@+id/nav_new_dictionary"
             android:icon="@drawable/smileimg"
             android:title="@string/new_dictionary" />
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/icons8_gear_24"
-            android:title="@string/settings" />
-        <item android:title="@string/social">
-            <menu>
-                <group>
-                    <item android:icon="@drawable/icons8_telegram_24"
-                        android:title="Telegram"/>
-                    <item android:icon="@drawable/icons8_instagram_24"
-                        android:title="Instagram"/>
-                </group>
-            </menu>
-        </item>
+<!--        <item-->
+<!--            android:id="@+id/nav_settings"-->
+<!--            android:icon="@drawable/icons8_gear_24"-->
+<!--            android:title="@string/settings" />-->
+<!--        <item android:title="@string/social">-->
+<!--            <menu>-->
+<!--                <group>-->
+<!--                    <item android:icon="@drawable/icons8_telegram_24"-->
+<!--                        android:title="Telegram"/>-->
+<!--                    <item android:icon="@drawable/icons8_instagram_24"-->
+<!--                        android:title="Instagram"/>-->
+<!--                </group>-->
+<!--            </menu>-->
+<!--        </item>-->
 
-        <item
-            android:id="@+id/nav_aboutus"
-            android:icon="@drawable/icons8_about_24"
-            android:title="About us" />
+<!--        <item-->
+<!--            android:id="@+id/nav_aboutus"-->
+<!--            android:icon="@drawable/icons8_about_24"-->
+<!--            android:title="About us" />-->
     </group>
 </menu>
