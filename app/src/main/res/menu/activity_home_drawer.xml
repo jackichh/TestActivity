@@ -8,42 +8,36 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home_6"
-            android:title="@string/menu_home"/>
+            android:title="@string/menu_home" />
         <item android:id="@+id/nav_dictionaries"
             android:title="@string/menu_dictionaries"
             android:icon="@drawable/bookicon25"
             android:enabled="false"/>
-        <item android:title=""/>
     </group>
 
     <group android:checkableBehavior="single">
-        <item android:title="@string/social">
-            <menu>
-                <group>
-                    <item android:icon="@drawable/icons8_telegram_24"
-                        android:title="@string/telegram"/>
-                    <item android:icon="@drawable/icons8_instagram_24"
-                        android:title="@string/instagram"/>
-                </group>
-            </menu>
-        </item>
-        <item android:title="@string/others">
-            <menu>
-                <group>
-                    <item
-                        android:id="@+id/nav_new_dictionary"
-                        android:icon="@drawable/smileimg"
-                        android:title="@string/new_dictionary" />
-                    <item
-                        android:id="@+id/nav_settings"
-                        android:icon="@drawable/icons8_gear_24"
-                        android:title="@string/settings" />
-                    <item
-                        android:id="@+id/nav_about_us"
-                        android:icon="@drawable/icons8_about_24"
-                        android:title="@string/about_us"/>
-                </group>
-            </menu>
-        </item>
+        <item
+            android:id="@+id/nav_new_dictionary"
+            android:icon="@drawable/smileimg"
+            android:title="@string/new_dictionary" />
+<!--        <item-->
+<!--            android:id="@+id/nav_settings"-->
+<!--            android:icon="@drawable/icons8_gear_24"-->
+<!--            android:title="@string/settings" />-->
+<!--        <item android:title="@string/social">-->
+<!--            <menu>-->
+<!--                <group>-->
+<!--                    <item android:icon="@drawable/icons8_telegram_24"-->
+<!--                        android:title="Telegram"/>-->
+<!--                    <item android:icon="@drawable/icons8_instagram_24"-->
+<!--                        android:title="Instagram"/>-->
+<!--                </group>-->
+<!--            </menu>-->
+<!--        </item>-->
+
+<!--        <item-->
+<!--            android:id="@+id/nav_aboutus"-->
+<!--            android:icon="@drawable/icons8_about_24"-->
+<!--            android:title="About us" />-->
     </group>
 </menu>

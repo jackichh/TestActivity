@@ -2,7 +2,6 @@ package com.example.testactivity.ui.newdictionary;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.SurfaceControl;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -53,12 +52,9 @@ public class NewDictionaryFragment extends Fragment {
     }
 
     private void initListeners() {
-
-        binding.fabNew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+        binding.fabNew.setOnClickListener(
+                v -> Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show()
+        );
     }
 
     @Override

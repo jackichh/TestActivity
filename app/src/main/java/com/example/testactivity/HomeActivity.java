@@ -1,33 +1,43 @@
 package com.example.testactivity;
 
 import android.os.Bundle;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testactivity.databinding.ActivityHomeBinding;
+import com.example.testactivity.ui.home.adapter.DrawerAdapter;
+import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
 
+    ArrayList<String> menuList;
+    ArrayList<String> list = new ArrayList<>();
+    int count = 0;
+
+    DrawerAdapter mDrawerAdapter;
+    ScrollView scrollView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -35,39 +45,67 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarHome.toolbar);
 
         DrawerLayout drawer = binding.drawerLayout;
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, binding.appBarHome.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+//        menuList = getDataTemp();
+
+        binding.navMenu.dictionaryList.setHasFixedSize(true);
+        mDrawerAdapter = new DrawerAdapter(HomeActivity.this);
+        binding.navMenu.dictionaryList.setAdapter(mDrawerAdapter);
+        mDrawerAdapter.addDrawerMenuList(list);
+
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_new_dictionary, R.id.nav_settings, R.id.nav_about_us)
+                R.id.nav_home, R.id.nav_new_dictionary, R.id.nav_settings)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        initListeners();
+
+    }
+
+    public void onItemSelected(int item) {
+        Toast.makeText(HomeActivity.this, "onItemSelected " + (item + 1), Toast.LENGTH_SHORT).show();
+        binding.drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+//    public ArrayList<String> getDataTemp() {
+//        ArrayList<String> list = new ArrayList<>();
+//        for (int i = 0; i < count; i++) {
+//            list.add("DICTIONARY " + (i + 1));
+//        }
+//        return list;
+//    }
+
+    private void initListeners() {
+        binding.navMenu.homeItem.setOnClickListener(view -> {
+            Toast.makeText(HomeActivity.this, "HOME", Toast.LENGTH_SHORT).show();
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        });
+        binding.navMenu.navNewDictionary.setOnClickListener(view -> {
+            Toast.makeText(HomeActivity.this, "ADD", Toast.LENGTH_SHORT).show();
+            mDrawerAdapter.addDrawerMenuItem(list, "Dictionary " + (count+1));
+            count++;
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        });
+//        binding.navMenu.dictionaryList.setOnLongClickListener(v ->
+//            mDrawerAdapter.deleteDrawerMenuItem()
+//        );
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
-        getMenuInflater().inflate(R.menu.app_bar_menu, menu);
+//        getMenuInflater().inflate(R.menu.app_bar_menu, menu);
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.practice:
-                Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.search:
-                Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -75,5 +113,4 @@ public class HomeActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 }
