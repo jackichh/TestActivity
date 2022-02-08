@@ -33,6 +33,10 @@ public class HomeActivity extends AppCompatActivity {
     DrawerAdapter mDrawerAdapter;
     ScrollView scrollView;
 
+    ArrayList<String> menuList;
+
+    DrawerAdapter mDrawerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,20 +54,20 @@ public class HomeActivity extends AppCompatActivity {
                 this, drawer, binding.appBarHome.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-//        menuList = getDataTemp();
+        menuList = getDataTemp();
 
         binding.navMenu.dictionaryList.setHasFixedSize(true);
-        mDrawerAdapter = new DrawerAdapter(HomeActivity.this);
+        mDrawerAdapter = new DrawerAdapter(menuList, HomeActivity.this);
         binding.navMenu.dictionaryList.setAdapter(mDrawerAdapter);
-        mDrawerAdapter.addDrawerMenuList(list);
+        mDrawerAdapter.addDrawerMenuList(getDataTemp());
 
         NavigationView navigationView = binding.navView;
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_new_dictionary, R.id.nav_settings)
-                .setOpenableLayout(drawer)
-                .build();
+//        mAppBarConfiguration = new AppBarConfiguration.Builder(
+//                R.id.nav_home, R.id.nav_new_dictionary, R.id.nav_settings)
+//                .setOpenableLayout(drawer)
+//                .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
         initListeners();
@@ -97,6 +101,33 @@ public class HomeActivity extends AppCompatActivity {
 //        binding.navMenu.dictionaryList.setOnLongClickListener(v ->
 //            mDrawerAdapter.deleteDrawerMenuItem()
 //        );
+
+        initListeners();
+
+    }
+
+    public void onItemSelected(int item) {
+        Toast.makeText(HomeActivity.this, "onItemSelected " + (item + 1), Toast.LENGTH_SHORT).show();
+        binding.drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    private ArrayList<String> getDataTemp() {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            list.add("DICTIONARY " + (i + 1));
+        }
+        return list;
+    }
+
+    private void initListeners() {
+        binding.navMenu.homeItem.setOnClickListener(view -> {
+            Toast.makeText(HomeActivity.this, "HOME", Toast.LENGTH_SHORT).show();
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        });
+        binding.navMenu.addItem.setOnClickListener(view -> {
+            Toast.makeText(HomeActivity.this, "ADD", Toast.LENGTH_SHORT).show();
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        });
     }
 
     @Override
