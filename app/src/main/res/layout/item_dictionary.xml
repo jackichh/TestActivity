@@ -14,9 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:textColor="@color/black_opacity_50"
         android:textSize="14sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         tools:text="Abracadabra" />
 </androidx.cardview.widget.CardView>

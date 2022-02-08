@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.HomeActivity;
@@ -17,13 +18,25 @@ import java.util.ArrayList;
 public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.DrawerViewHolder> {
 
     private ArrayList<String> menuList;
+    private String menuItem;
     private Context mContext;
 
 
+    public String getMenuItem() {
+        return menuItem;
+    }
+
+    public void setMenuItem(String menuItem) {
+        this.menuItem = menuItem;
+    }
 
     public DrawerAdapter(ArrayList<String> menuList, Context context) {
         this.menuList = menuList;
         this.mContext  = context;
+    }
+
+    public DrawerAdapter(Context context){
+
     }
 
     @NonNull
@@ -37,10 +50,11 @@ public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.DrawerVie
     @Override
     public void onBindViewHolder(@NonNull DrawerViewHolder holder, final int position) {
         holder.menuName.setText(menuList.get(position));
-        holder.itemView.setOnClickListener(view -> {
+        holder.item.setOnClickListener(view -> {
             if (mContext instanceof HomeActivity){
                 ((HomeActivity)mContext).onItemSelected(position);
             }
+
         });
 
     }
@@ -55,12 +69,26 @@ public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.DrawerVie
         notifyDataSetChanged();
     }
 
+    public void deleteDrawerMenuItem(ArrayList<String> menuList, int pos){
+        this.menuList = menuList;
+        menuList.remove(pos);
+    }
+
+    public void addDrawerMenuItem(ArrayList<String> menuList, String menuItem){
+        this.menuList = menuList;
+        this.menuItem = menuItem;
+        menuList.add(menuItem);
+        notifyDataSetChanged();
+
+    }
+
     static class DrawerViewHolder extends RecyclerView.ViewHolder{
         TextView menuName;
-
+        CardView item;
         DrawerViewHolder(@NonNull View itemView) {
             super(itemView);
             menuName = itemView.findViewById(R.id.dictionary_item_title);
+            item = itemView.findViewById(R.id.dictionary_card);
         }
 
     }
