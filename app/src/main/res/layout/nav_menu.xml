@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="600dp">
+        android:layout_height="400dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/home_item"
@@ -82,7 +82,6 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/dictionary_item"
             app:layout_constraintBottom_toTopOf="@id/add_item"
-            tools:itemCount="5"
             tools:listitem="@layout/item_dictionary" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
