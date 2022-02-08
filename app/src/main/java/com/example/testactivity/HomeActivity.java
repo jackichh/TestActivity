@@ -2,8 +2,6 @@ package com.example.testactivity;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -31,9 +29,6 @@ public class HomeActivity extends AppCompatActivity {
     int count = 0;
 
     DrawerAdapter mDrawerAdapter;
-//
-//    ArrayList<String> menuList;
-//    DrawerAdapter mDrawerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +85,9 @@ public class HomeActivity extends AppCompatActivity {
             Toast.makeText(HomeActivity.this, "HOME", Toast.LENGTH_SHORT).show();
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
-        binding.navMenu.navNewDictionary.setOnClickListener(view -> {
+        binding.navMenu.addItem.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "ADD", Toast.LENGTH_SHORT).show();
-            mDrawerAdapter.addDrawerMenuItem(list, "Dictionary " + (count+1));
+//            mDrawerAdapter.addDrawerMenuItem(list, "Dictionary " + (count+1));
             count++;
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
@@ -103,11 +98,11 @@ public class HomeActivity extends AppCompatActivity {
         initListeners();
 
     }
-
-    public void onItemSelected(int item) {
-        Toast.makeText(HomeActivity.this, "onItemSelected " + (item + 1), Toast.LENGTH_SHORT).show();
-        binding.drawerLayout.closeDrawer(GravityCompat.START);
-    }
+//
+//    public void onItemSelected(int item) {
+//        Toast.makeText(HomeActivity.this, "onItemSelected " + (item + 1), Toast.LENGTH_SHORT).show();
+//        binding.drawerLayout.closeDrawer(GravityCompat.START);
+//    }
 
     private ArrayList<String> getDataTemp() {
         ArrayList<String> list = new ArrayList<>();
@@ -117,16 +112,16 @@ public class HomeActivity extends AppCompatActivity {
         return list;
     }
 
-    private void initListeners() {
-        binding.navMenu.homeItem.setOnClickListener(view -> {
-            Toast.makeText(HomeActivity.this, "HOME", Toast.LENGTH_SHORT).show();
-            binding.drawerLayout.closeDrawer(GravityCompat.START);
-        });
-        binding.navMenu.addItem.setOnClickListener(view -> {
-            Toast.makeText(HomeActivity.this, "ADD", Toast.LENGTH_SHORT).show();
-            binding.drawerLayout.closeDrawer(GravityCompat.START);
-        });
-    }
+//    private void initListeners() {
+//        binding.navMenu.homeItem.setOnClickListener(view -> {
+//            Toast.makeText(HomeActivity.this, "HOME", Toast.LENGTH_SHORT).show();
+//            binding.drawerLayout.closeDrawer(GravityCompat.START);
+//        });
+//        binding.navMenu.addItem.setOnClickListener(view -> {
+//            Toast.makeText(HomeActivity.this, "ADD", Toast.LENGTH_SHORT).show();
+//            binding.drawerLayout.closeDrawer(GravityCompat.START);
+//        });
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
