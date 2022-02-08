@@ -31,11 +31,9 @@ public class HomeActivity extends AppCompatActivity {
     int count = 0;
 
     DrawerAdapter mDrawerAdapter;
-    ScrollView scrollView;
-
-    ArrayList<String> menuList;
-
-    DrawerAdapter mDrawerAdapter;
+//
+//    ArrayList<String> menuList;
+//    DrawerAdapter mDrawerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
