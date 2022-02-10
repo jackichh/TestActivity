@@ -4,13 +4,14 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/home_item"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginVertical="12dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -81,10 +82,12 @@
             android:layout_marginEnd="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/dictionary_item"
-            app:layout_constraintBottom_toTopOf="@id/add_item"
+            app:layout_constraintBottom_toTopOf="@id/add_item2"
             tools:listitem="@layout/item_dictionary"
             android:isScrollContainer="true"
             app:fastScrollEnabled="false"/>
+
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_item"
@@ -119,4 +122,39 @@
                 app:layout_constraintStart_toEndOf="@+id/plus"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_item2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginVertical="24dp"
+        app:layout_constraintBottom_toTopOf="@id/add_item">
+        <!--            app:layout_constraintTop_toBottomOf="@id/dictionary_list">-->
+
+        <ImageView
+            android:id="@+id/gear"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="24dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_gear"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/add_title2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
+            android:text="@string/settings"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/gear"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
