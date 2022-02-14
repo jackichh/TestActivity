@@ -6,18 +6,19 @@
     android:id="@+id/dictionary_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp">
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/colorPrimary">
 
     <TextView
         android:id="@+id/dictionary_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:padding="12dp"
-        android:textColor="@color/black_opacity_50"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="Text"
-        />
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:fontFamily="@font/ubuntu_bold"
+        tools:text="Text"/>
 </androidx.cardview.widget.CardView>

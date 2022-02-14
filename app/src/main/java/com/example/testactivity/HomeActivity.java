@@ -70,6 +70,8 @@ public class HomeActivity extends AppCompatActivity {
         binding.drawerLayout.closeDrawer(GravityCompat.START);
     }
 
+
+
     private void initListeners() {
         binding.navMenu.homeItem.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "HOME", Toast.LENGTH_SHORT).show();
@@ -82,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
         binding.navMenu.settings.setOnClickListener(view -> {
-//            findNavController(this, R.id.nav_settings);
+
         });
     }
 

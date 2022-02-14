@@ -18,7 +18,6 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_new_dictionary"
-            android:icon="@drawable/smileimg"
             android:title="@string/new_dictionary"
             />
 <!--        <item-->
