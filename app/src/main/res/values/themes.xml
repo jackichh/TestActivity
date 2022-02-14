@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen"> true </item>
     </style>
 
     <style name="Theme.TestActivity.NoActionBar">
@@ -21,5 +22,5 @@
 
     <style name="Theme.TestActivity.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.TestActivity.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.TestActivity.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 </resources>

@@ -20,7 +20,7 @@
                 android:layout_height="36dp"
                 android:layout_marginStart="24dp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/home_6"
+                android:src="@drawable/ic_home"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +32,7 @@
                 android:layout_marginStart="24dp"
                 android:gravity="center_vertical"
                 android:text="@string/menu_home"
+                android:fontFamily="@font/ubuntu_regular"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -65,6 +66,7 @@
                 android:layout_marginStart="24dp"
                 android:gravity="center_vertical"
                 android:text="@string/menu_dictionaries"
+                android:fontFamily="@font/ubuntu_regular"
                 android:textColor="@color/black_opacity_50"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -103,13 +105,14 @@
                 android:layout_height="36dp"
                 android:layout_marginStart="24dp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/smileimg"
+                android:src="@drawable/ic_add"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/add_title"
+                android:fontFamily="@font/ubuntu_regular"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="24dp"
@@ -137,18 +140,19 @@
             android:layout_height="36dp"
             android:layout_marginStart="24dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_gear"
+            android:src="@drawable/ic_settings"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/add_title2"
+            android:id="@+id/settings"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="24dp"
             android:gravity="center_vertical"
             android:text="@string/settings"
+            android:fontFamily="@font/ubuntu_regular"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
