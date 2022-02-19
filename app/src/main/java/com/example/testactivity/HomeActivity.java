@@ -1,7 +1,6 @@
 package com.example.testactivity;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -29,10 +28,11 @@ public class HomeActivity extends AppCompatActivity {
 
     DrawerAdapter mDrawerAdapter;
 
+    NavController navController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
 //                R.id.nav_home, R.id.nav_new_dictionary, R.id.nav_settings)
 //                .setOpenableLayout(drawer)
 //                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
 //        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -67,22 +67,35 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onItemSelected(int item) {
         Toast.makeText(HomeActivity.this, "onItemSelected " + (item + 1), Toast.LENGTH_SHORT).show();
+        navController.navigate(R.id.dictionaryDetail);
         binding.drawerLayout.closeDrawer(GravityCompat.START);
     }
 
     private void initListeners() {
         binding.navMenu.homeItem.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "HOME", Toast.LENGTH_SHORT).show();
+            navController.navigate(R.id.nav_home);
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
+
+        binding.navMenu.settings.setOnClickListener(view ->{
+            Toast.makeText(HomeActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+            navController.navigate(R.id.nav_settings);
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        });
+
+
         binding.navMenu.addItem.setOnClickListener(view -> {
+
+            navController.navigate(R.id.nav_new_dictionary);
             Toast.makeText(HomeActivity.this, "ADD", Toast.LENGTH_SHORT).show();
-            mDrawerAdapter.addDrawerMenuItem(list, "Dictionary " + (count+1));
-            count++;
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
     }
 
+    public void addDictionary(String name) {
+        mDrawerAdapter.addDrawerMenuItem(list, name);
+    }
 
 
     @Override

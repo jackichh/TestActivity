@@ -4,10 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.ListPopupWindow;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,19 +11,24 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.example.testactivity.HomeActivity;
 import com.example.testactivity.R;
 import com.example.testactivity.databinding.FragmentNewDictionaryBinding;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class NewDictionaryFragment extends Fragment {
 
     private NewDictionaryViewModel newDictionaryViewModel;
     private FragmentNewDictionaryBinding binding;
 
+    NavController navController;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_home);
 
 
         newDictionaryViewModel = new ViewModelProvider(this).get(NewDictionaryViewModel.class);
@@ -35,11 +36,10 @@ public class NewDictionaryFragment extends Fragment {
         binding = FragmentNewDictionaryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final EditText editText = binding.textNewDictionary;
         newDictionaryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                editText.setHint(s);
+                binding.textNewDictionary.setHint(s);
             }
         });
         return root;
@@ -52,8 +52,11 @@ public class NewDictionaryFragment extends Fragment {
     }
 
     private void initListeners() {
-        binding.fabNew.setOnClickListener(
-                v -> Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show()
+        binding.fabNew.setOnClickListener(v -> {
+                    Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show();
+                    ((HomeActivity) requireActivity()).addDictionary(binding.textNewDictionary.getText().toString());
+                    navController.navigate(R.id.nav_home);
+                }
         );
     }
 

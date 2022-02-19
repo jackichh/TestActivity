@@ -18,10 +18,14 @@
         <entry key="app/src/main/res/drawable/ic_library_books.xml" value="0.249" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.20471014492753623" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.17864583333333334" />
+        <entry key="app/src/main/res/layout/content_home.xml" value="0.31521739130434784" />
+        <entry key="app/src/main/res/layout/dictionary_detail_fragment.xml" value="0.31521739130434784" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.17864583333333334" />
         <entry key="app/src/main/res/layout/fragment_new_dictionary.xml" value="0.21105072463768115" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.31521739130434784" />
         <entry key="app/src/main/res/layout/item_dictionary.xml" value="0.31521739130434784" />
         <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.20471014492753623" />
-        <entry key="app/src/main/res/layout/nav_menu.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/nav_menu.xml" value="0.5" />
         <entry key="app/src/main/res/menu/activity_home_drawer.xml" value="0.17864583333333334" />
         <entry key="app/src/main/res/menu/home.xml" value="0.34479166666666666" />
       </map>
