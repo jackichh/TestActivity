@@ -69,6 +69,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    public void addDictionary(String name) {
+        mDrawerAdapter.addDrawerMenuItem(list, name);
+    }
+
+
 
     private void initListeners() {
         binding.navMenu.homeItem.setOnClickListener(view -> {
@@ -79,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
         });
         binding.navMenu.addItem.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Add", Toast.LENGTH_SHORT).show();
-            navController.navigate(R.id.nav_dictionary_detail);
+            navController.navigate(R.id.nav_new_dictionary);
             mDrawerAdapter.addDrawerMenuItem(list, "Dictionary " + (count+1));
             count++;
             binding.drawerLayout.closeDrawer(GravityCompat.START);

@@ -21,6 +21,7 @@
         android:includeFontPadding="false"
         android:fontFamily="@font/ubuntu_medium"
         android:textColorHint="@color/colorTextHint"
+        android:textColor="@color/colorWhite"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

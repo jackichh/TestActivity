@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.testactivity.HomeActivity;
 import com.example.testactivity.R;
@@ -31,6 +32,7 @@ public class NewDictionaryFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_home);
 
         NewDictionaryViewModel newDictionaryViewModel = new ViewModelProvider(this).get(NewDictionaryViewModel.class);
 
@@ -54,11 +56,12 @@ public class NewDictionaryFragment extends Fragment {
     }
 
     private void initListeners() {
-        //binding.fabNew.setOnClickListener(
-//                Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show();
-//        ((HomeActivity) requireActivity()).addDictionary(binding.textNewDictionary.getText().toString());
-//        navController.navigate(R.id.nav_home);
-//        );
+        binding.fabNew.setOnClickListener(v -> {
+                    Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show();
+                    ((HomeActivity) requireActivity()).addDictionary(binding.textNewDictionary.getText().toString());
+                    navController.navigate(R.id.nav_home);
+                }
+        );
     }
 
     @Override
