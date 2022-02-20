@@ -1,4 +1,7 @@
 package com.example.testactivity.ui.dictionarydetaile;
 
-public class DictionaryDetailViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class DictionaryDetailViewModel extends ViewModel {
+    // TODO: Implement the ViewModel
 }
