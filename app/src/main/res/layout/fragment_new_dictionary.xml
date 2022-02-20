@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.newdictionary.NewDictionaryFragment">
+    tools:context=".ui.newdictionary.NewDictionaryFragment"
+    android:background="@color/colorBackground">
 
     <EditText
         android:id="@+id/text_new_dictionary"
@@ -16,6 +17,10 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:hint="@string/edit_title"
+        android:inputType="text"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/ubuntu_medium"
+        android:textColorHint="@color/colorTextHint"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

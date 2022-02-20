@@ -15,7 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 
+import com.example.testactivity.HomeActivity;
 import com.example.testactivity.R;
 import com.example.testactivity.databinding.FragmentNewDictionaryBinding;
 
@@ -25,6 +27,7 @@ import java.util.List;
 public class NewDictionaryFragment extends Fragment {
 
     private FragmentNewDictionaryBinding binding;
+    NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -51,9 +54,11 @@ public class NewDictionaryFragment extends Fragment {
     }
 
     private void initListeners() {
-        binding.fabNew.setOnClickListener(
-                v -> Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show()
-        );
+        //binding.fabNew.setOnClickListener(
+//                Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show();
+//        ((HomeActivity) requireActivity()).addDictionary(binding.textNewDictionary.getText().toString());
+//        navController.navigate(R.id.nav_home);
+//        );
     }
 
     @Override
