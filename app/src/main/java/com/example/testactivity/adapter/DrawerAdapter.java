@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.HomeActivity;
@@ -72,6 +74,10 @@ public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.DrawerVie
     public void deleteDrawerMenuItem(ArrayList<String> menuList, int pos){
         this.menuList = menuList;
         menuList.remove(pos);
+    }
+
+    public String getItemText(int position) {
+        return menuList.get(position);
     }
 
     public void addDrawerMenuItem(ArrayList<String> menuList, String menuItem){

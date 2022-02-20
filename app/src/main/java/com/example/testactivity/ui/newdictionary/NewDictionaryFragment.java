@@ -57,7 +57,9 @@ public class NewDictionaryFragment extends Fragment {
 
     private void initListeners() {
         binding.fabNew.setOnClickListener(v -> {
-                    Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(),
+                    R.string.created,
+                    Toast.LENGTH_SHORT).show();
                     ((HomeActivity) requireActivity()).addDictionary(binding.textNewDictionary.getText().toString());
                     navController.navigate(R.id.nav_home);
                 }

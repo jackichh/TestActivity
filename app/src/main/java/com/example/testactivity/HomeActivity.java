@@ -2,19 +2,28 @@ package com.example.testactivity;
 
 import static androidx.navigation.Navigation.findNavController;
 
+import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.testactivity.databinding.ActivityHomeBinding;
 import com.example.testactivity.adapter.DrawerAdapter;
+import com.example.testactivity.ui.dictionarydetail.DictionaryDetailViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -24,6 +33,8 @@ public class HomeActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
     NavController navController;
+
+    DictionaryDetailViewModel dictionaryDetailViewModel;
 
     ArrayList<String> list = new ArrayList<>();
     int count = 0;
@@ -35,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-
+        dictionaryDetailViewModel = new ViewModelProvider(this).get(DictionaryDetailViewModel.class);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -64,7 +75,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onItemSelected(int item) {
-        Toast.makeText(HomeActivity.this, "onItemSelected " + (item + 1), Toast.LENGTH_SHORT).show();
+        Toast.makeText(HomeActivity.this, (CharSequence) mDrawerAdapter.getItemText(item), Toast.LENGTH_SHORT).show();
+        dictionaryDetailViewModel.setText(mDrawerAdapter.getItemText(item));
+        navController.navigate(R.id.nav_dictionary_detail);
         binding.drawerLayout.closeDrawer(GravityCompat.START);
     }
 
@@ -76,24 +89,50 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void initListeners() {
+        //Home
         binding.navMenu.homeItem.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
             navController.navigate(R.id.nav_home);
             binding.drawerLayout.closeDrawer(GravityCompat.START);
 
         });
+
+        //New dictionary
         binding.navMenu.addItem.setOnClickListener(view -> {
-            Toast.makeText(HomeActivity.this, "Add", Toast.LENGTH_SHORT).show();
             navController.navigate(R.id.nav_new_dictionary);
-            mDrawerAdapter.addDrawerMenuItem(list, "Dictionary " + (count+1));
-            count++;
+            final EditText taskEditText = new EditText(this);
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setTitle("Set title of your dictionary")
+                    .setView(taskEditText)
+                    .setPositiveButton("Create", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getApplicationContext(),
+                                    R.string.created,
+                                    Toast.LENGTH_SHORT).show();
+                            addDictionary(taskEditText.getText().toString());
+                            navController.navigate(R.id.nav_home);
+                        }
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .create();
+            dialog.show();
+            //mDrawerAdapter.addDrawerMenuItem(list, "Dictionary " + (count+1));
+            //count++;
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
+
+
+        //Settings
         binding.navMenu.settings.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Settings", Toast.LENGTH_SHORT).show();
             navController.navigate(R.id.nav_settings);
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
+
+        //Dictionaries
+
+
     }
 
 

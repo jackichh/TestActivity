@@ -16,4 +16,6 @@
     <string name="smart_dictionary">Smart dictionary</string>
     <string name="gmail_of_creator">malenkyyzhenia11@gmail.com</string>
     <string name="social">Social</string>
+    <string name="created">Created</string>
+    <string name="edit_title_of_dictionary">Edit title of dictionary</string>
 </resources>

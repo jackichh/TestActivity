@@ -22,6 +22,8 @@
         android:fontFamily="@font/ubuntu_medium"
         android:textColorHint="@color/colorTextHint"
         android:textColor="@color/colorWhite"
+        android:importantForAutofill="no"
+        android:background="@null"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,5 +37,5 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/saveicon2"/>
+        android:src="@drawable/ic_save_dictionary"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

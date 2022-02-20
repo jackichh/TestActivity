@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -17,7 +19,6 @@ import com.example.testactivity.databinding.FragmentDictionaryDetailBinding;
 
 public class DictionaryDetailFragment extends Fragment {
 
-    private DictionaryDetailViewModel mViewModel;
     FragmentDictionaryDetailBinding binding;
     NavController navController;
 
@@ -29,10 +30,22 @@ public class DictionaryDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_home);
-        mViewModel = new ViewModelProvider(this).get(DictionaryDetailViewModel.class);
+        DictionaryDetailViewModel dictionaryDetailViewModel = new ViewModelProvider(this).get(DictionaryDetailViewModel.class);
         binding = FragmentDictionaryDetailBinding.inflate(inflater, container, false);
 
-        return binding.getRoot();
+        View root = binding.getRoot();
+
+        final TextView textView = binding.textDictionaryDetail;
+        textView.setText(dictionaryDetailViewModel.getText());
+//        dictionaryDetailViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
+
+        return root;
+
     }
 
 }

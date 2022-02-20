@@ -27,5 +27,5 @@
         android:id="@+id/nav_dictionary_detail"
         android:name="com.example.testactivity.ui.dictionarydetail.DictionaryDetailFragment"
         android:label="Dictionary detail"
-        tools:layout="@layout/dictionary_detail_fragment" />
+        tools:layout="@layout/fragment_dictionary_detail" />
 </navigation>
