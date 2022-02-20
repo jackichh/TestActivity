@@ -24,13 +24,12 @@ import java.util.List;
 
 public class NewDictionaryFragment extends Fragment {
 
-    private NewDictionaryViewModel newDictionaryViewModel;
     private FragmentNewDictionaryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        newDictionaryViewModel = new ViewModelProvider(this).get(NewDictionaryViewModel.class);
+        NewDictionaryViewModel newDictionaryViewModel = new ViewModelProvider(this).get(NewDictionaryViewModel.class);
 
         binding = FragmentNewDictionaryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

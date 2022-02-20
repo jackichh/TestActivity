@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
 
         NavigationView navigationView = binding.navView;
 
-//        navController = findNavController(this, R.id.nav_host_fragment_content_home);
+        navController = findNavController(this, R.id.nav_host_fragment_content_home);
 
 //        NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -72,17 +72,22 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initListeners() {
         binding.navMenu.homeItem.setOnClickListener(view -> {
-            Toast.makeText(HomeActivity.this, "HOME", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
+            navController.navigate(R.id.nav_home);
             binding.drawerLayout.closeDrawer(GravityCompat.START);
+
         });
         binding.navMenu.addItem.setOnClickListener(view -> {
-            Toast.makeText(HomeActivity.this, "ADD", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "Add", Toast.LENGTH_SHORT).show();
+            navController.navigate(R.id.nav_dictionary_detail);
             mDrawerAdapter.addDrawerMenuItem(list, "Dictionary " + (count+1));
             count++;
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
         binding.navMenu.settings.setOnClickListener(view -> {
-
+            Toast.makeText(HomeActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+            navController.navigate(R.id.nav_settings);
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
     }
 

@@ -1,4 +1,4 @@
-package com.example.testactivity.ui.dictionarydetaile;
+package com.example.testactivity.ui.dictionarydetail;
 
 import androidx.lifecycle.ViewModel;
 

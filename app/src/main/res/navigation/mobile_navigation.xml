@@ -22,4 +22,10 @@
         android:name="com.example.testactivity.ui.settings.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_dictionary_detail"
+        android:name="com.example.testactivity.ui.dictionarydetail.DictionaryDetailFragment"
+        android:label="Dictionary detail"
+        tools:layout="@layout/dictionary_detail_fragment" />
 </navigation>

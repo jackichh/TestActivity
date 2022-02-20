@@ -1,4 +1,4 @@
-package com.example.testactivity.ui.dictionarydetaile;
+package com.example.testactivity.ui.dictionarydetail;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,14 +15,14 @@ import androidx.navigation.Navigation;
 import com.example.testactivity.R;
 import com.example.testactivity.databinding.FragmentDictionaryDetailBinding;
 
-public class DictionaryDetail extends Fragment {
+public class DictionaryDetailFragment extends Fragment {
 
     private DictionaryDetailViewModel mViewModel;
     FragmentDictionaryDetailBinding binding;
     NavController navController;
 
-    public static DictionaryDetail newInstance() {
-        return new DictionaryDetail();
+    public static DictionaryDetailFragment newInstance() {
+        return new DictionaryDetailFragment();
     }
 
     @Override
