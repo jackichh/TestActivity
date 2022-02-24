@@ -1,4 +1,4 @@
-package com.example.testactivity.adapter;
+package com.example.testactivity.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,14 +8,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.testactivity.HomeActivity;
+import com.example.testactivity.activities.HomeActivity;
 import com.example.testactivity.R;
+import com.example.testactivity.entities.Dictionary;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.DrawerViewHolder> {
 
@@ -37,9 +37,6 @@ public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.DrawerVie
         this.mContext  = context;
     }
 
-    public DrawerAdapter(Context context){
-
-    }
 
     @NonNull
     @Override
@@ -51,7 +48,7 @@ public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.DrawerVie
 
     @Override
     public void onBindViewHolder(@NonNull DrawerViewHolder holder, final int position) {
-        holder.menuName.setText(menuList.get(position));
+        holder.menuName.setText((CharSequence) menuList.get(position));
         holder.item.setOnClickListener(view -> {
             if (mContext instanceof HomeActivity){
                 ((HomeActivity)mContext).onItemSelected(position);

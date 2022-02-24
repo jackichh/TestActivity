@@ -1,10 +1,13 @@
 package com.example.testactivity.ui.dictionarydetail;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,14 +16,25 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.R;
+import com.example.testactivity.adapters.DictionaryAdapter;
 import com.example.testactivity.databinding.FragmentDictionaryDetailBinding;
+
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.List;
 
 public class DictionaryDetailFragment extends Fragment {
 
     FragmentDictionaryDetailBinding binding;
+    private RecyclerView dictionariesRecyclerView;
+    private List<Dictionary> dictionaryList;
+    private DictionaryAdapter dictionaryAdapter;
+
     NavController navController;
+    EditText inputWord, inputTranslation;
 
     public static DictionaryDetailFragment newInstance() {
         return new DictionaryDetailFragment();
@@ -33,10 +47,12 @@ public class DictionaryDetailFragment extends Fragment {
         DictionaryDetailViewModel dictionaryDetailViewModel = new ViewModelProvider(this).get(DictionaryDetailViewModel.class);
         binding = FragmentDictionaryDetailBinding.inflate(inflater, container, false);
 
+
+
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDictionaryDetail;
-        textView.setText(dictionaryDetailViewModel.getText());
+        //final TextView textView = binding.textDictionaryDetail;
+        //textView.setText(dictionaryDetailViewModel.getText());
 //        dictionaryDetailViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
 //            @Override
 //            public void onChanged(@Nullable String s) {

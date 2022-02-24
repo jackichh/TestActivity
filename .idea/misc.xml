@@ -4,30 +4,38 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/TestActivity/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18425925925925926" />
+        <entry key="..\:/TestActivity/app/src/main/res/drawable/background_dictionary_item.xml" value="0.221875" />
+        <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_account_box.xml" value="0.2935185185185185" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_add.xml" value="0.2537037037037037" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_allert.xml" value="0.22777777777777777" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_book.xml" value="0.2537037037037037" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_home.xml" value="0.2537037037037037" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2537037037037037" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_library_books.xml" value="0.2537037037037037" />
+        <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_menu_book.xml" value="0.2935185185185185" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.22777777777777777" />
+        <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_search.xml" value="0.2935185185185185" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_settings.xml" value="0.2537037037037037" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/activity_home.xml" value="0.16160081053698075" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/app_bar_home.xml" value="0.21875" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/content_home.xml" value="0.1" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/dictionary_detail_fragment.xml" value="0.33229166666666665" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_about_us.xml" value="0.271286231884058" />
+        <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_dashboard.xml" value="0.33229166666666665" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_dictionary_detail.xml" value="0.23999999479814021" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_gallery.xml" value="0.21875" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_home.xml" value="0.21875" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_new_dicitonary.xml" value="0.21875" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_new_dictionary.xml" value="0.1828125" />
+        <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_notifications.xml" value="0.1828125" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_settings.xml" value="0.33229166666666665" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_slideshow.xml" value="0.21875" />
+        <entry key="..\:/TestActivity/app/src/main/res/layout/item_container_dictionary.xml" value="0.2727272668160684" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/item_dictionary.xml" value="0.14351851851851852" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/nav_header_home.xml" value="0.21875" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/nav_menu.xml" value="0.23999999479814021" />
         <entry key="..\:/TestActivity/app/src/main/res/menu/activity_home_drawer.xml" value="0.33229166666666665" />
+        <entry key="..\:/TestActivity/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2727272668160684" />
         <entry key="..\:/TestActivity/app/src/main/res/menu/home.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/drawable/ic_library_books.xml" value="0.249" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.20471014492753623" />

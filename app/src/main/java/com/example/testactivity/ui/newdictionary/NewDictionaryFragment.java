@@ -1,13 +1,13 @@
 package com.example.testactivity.ui.newdictionary;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.ListPopupWindow;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,17 +18,22 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.example.testactivity.HomeActivity;
+import com.example.testactivity.activities.HomeActivity;
 import com.example.testactivity.R;
+import com.example.testactivity.dao.DictionaryDao;
+import com.example.testactivity.database.DictionariesDatabase;
 import com.example.testactivity.databinding.FragmentNewDictionaryBinding;
+import com.example.testactivity.entities.Dictionary;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class NewDictionaryFragment extends Fragment {
 
     private FragmentNewDictionaryBinding binding;
+
     NavController navController;
+    private DictionaryDao noteDao;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -39,7 +44,8 @@ public class NewDictionaryFragment extends Fragment {
         binding = FragmentNewDictionaryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final EditText editText = binding.textNewDictionary;
+        EditText editText = binding.textNewDictionary;
+
         newDictionaryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -57,11 +63,32 @@ public class NewDictionaryFragment extends Fragment {
 
     private void initListeners() {
         binding.fabNew.setOnClickListener(v -> {
+            if (!binding.textNewDictionary.getText().toString().isEmpty()){
             Toast.makeText(requireContext(),
                     R.string.created,
                     Toast.LENGTH_SHORT).show();
                     ((HomeActivity) requireActivity()).addDictionary(binding.textNewDictionary.getText().toString());
-                    navController.navigate(R.id.nav_home);
+                    navController.navigate(R.id.nav_home);}
+            else {
+                Toast.makeText(requireContext(), "Title can't be empty", Toast.LENGTH_SHORT).show();
+            }
+            final Dictionary dictionary = new Dictionary();
+            dictionary.setDictionaryName(binding.textNewDictionary.getText().toString());
+
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            Handler handler = new Handler(Looper.getMainLooper());
+
+            executor.execute(() -> {
+
+                //Background work here
+                DictionariesDatabase.getDatabase(requireContext()).dictionaryDao().insertDictionary(dictionary);
+
+
+                // pass to main thread
+                handler.post(this::onDestroyView);
+            });
+
+
                 }
         );
     }

@@ -1,9 +1,8 @@
 package com.example.testactivity.ui.dictionarydetail;
 
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.testactivity.adapter.DrawerAdapter;
+import com.example.testactivity.adapters.DrawerAdapter;
 
 public class DictionaryDetailViewModel extends ViewModel {
 
