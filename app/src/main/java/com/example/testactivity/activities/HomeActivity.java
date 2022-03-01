@@ -3,15 +3,12 @@ package com.example.testactivity.activities;
 import static androidx.navigation.Navigation.findNavController;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -20,17 +17,16 @@ import androidx.navigation.NavController;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.example.testactivity.R;
-import com.example.testactivity.adapters.DictionaryAdapter;
+import com.example.testactivity.adapters.DrawerAdapter;
 import com.example.testactivity.database.DictionariesDatabase;
 import com.example.testactivity.databinding.ActivityHomeBinding;
-import com.example.testactivity.adapters.DrawerAdapter;
 import com.example.testactivity.entities.Dictionary;
 import com.example.testactivity.ui.dictionarydetail.DictionaryDetailViewModel;
 import com.google.android.material.navigation.NavigationView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -42,25 +38,29 @@ public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     NavController navController;
 
-    private List<Dictionary> dictionaryList;
+    public static DictionariesDatabase dictionariesDatabase;
+
+    List<Dictionary> dictionaryList;
 
     DictionaryDetailViewModel dictionaryDetailViewModel;
 
     ArrayList<String> list = new ArrayList<>();
     int count = 0;
 
-    DrawerAdapter mDrawerAdapter;
-    private DictionaryAdapter dictionaryAdapter;
+    private DrawerAdapter drawerAdapter;
     private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getDictionaries();
 
         dictionaryDetailViewModel = new ViewModelProvider(this).get(DictionaryDetailViewModel.class);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        dictionariesDatabase = Room.databaseBuilder(getApplicationContext(),
+                DictionariesDatabase.class,
+                "dictdb").allowMainThreadQueries().build();
 
         setSupportActionBar(binding.appBarHome.toolbar);
 
@@ -70,12 +70,12 @@ public class HomeActivity extends AppCompatActivity {
                 this, drawer, binding.appBarHome.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        
-        mDrawerAdapter = new DrawerAdapter(list, HomeActivity.this);
-        binding.navMenu.dictionaryList.setAdapter(mDrawerAdapter);
 
+        dictionaryList=dictionariesDatabase.dictionaryDao().getAllDictionaries();
 
-        mDrawerAdapter.addDrawerMenuList(list);
+        drawerAdapter = new DrawerAdapter(dictionaryList, getApplicationContext());
+        binding.navMenu.dictionariesList.setAdapter(drawerAdapter);
+//        getDictionaries();
 
         NavigationView navigationView = binding.navView;
 
@@ -86,10 +86,11 @@ public class HomeActivity extends AppCompatActivity {
 //                .build();
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //        NavigationUI.setupWithNavController(binding.navView, navController);
-        //getDictionaries();
+
         initListeners();
 
     }
+
 
     @SuppressLint("NotifyDataSetChanged")
     private void getDictionaries() {
@@ -112,7 +113,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 } else {
                     dictionaryList.add(0, dictionaries.get(0));
-                    mDrawerAdapter.notifyDataSetChanged();
+                    drawerAdapter.notifyDataSetChanged();
                     //notesAdapter.notifyItemInserted(0);
                 }
 //                notesRecyclerView.setAdapter(new NotesAdapter(noteList));
@@ -123,16 +124,22 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onItemSelected(int item) {
-        Toast.makeText(HomeActivity.this, (CharSequence) mDrawerAdapter.getItemText(item), Toast.LENGTH_SHORT).show();
-        dictionaryDetailViewModel.setText(mDrawerAdapter.getItemText(item));
+        Toast.makeText(HomeActivity.this, drawerAdapter.getItemText(item), Toast.LENGTH_SHORT).show();
+        dictionaryDetailViewModel.setText(drawerAdapter.getItemText(item));
         navController.navigate(R.id.nav_dictionary_detail);
         binding.drawerLayout.closeDrawer(GravityCompat.START);
     }
 
-
-    public void addDictionary(String name) {
-        mDrawerAdapter.addDrawerMenuItem(list, name);
+    public void onItemLongClick(int item) {
+        drawerAdapter.deleteDrawerItem(item);
+        binding.drawerLayout.closeDrawer(GravityCompat.START);
     }
+
+
+
+//    public void addDictionary(Dictionary name) {
+//        drawerAdapter.addDrawerMenuItem(dictionaryList, name);
+//    }
 
 
 

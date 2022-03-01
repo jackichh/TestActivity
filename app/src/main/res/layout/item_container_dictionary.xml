@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/background_dictionary_item"
+    android:id="@+id/layoutDictionaryItem"
+    android:layout_marginStart="@dimen/_12sdp"
+    android:layout_marginTop="@dimen/_12sdp"
+    android:gravity="">
+
+    <CheckBox
+        android:id="@+id/choose_to_practice"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_8sdp"/>
+
+    
+    <EditText
+        android:id="@+id/inputWord"
+        android:inputType="text"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_weight="1"
+        android:fontFamily="@font/ubuntu_bold"
+        android:includeFontPadding="false"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorTextHint"
+        android:background="@null"
+        android:hint="@string/word"/>
+
+    <EditText
+        android:id="@+id/inputTranslation"
+        android:background="@null"
+        android:inputType="text"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_weight="1"
+        android:fontFamily="@font/ubuntu_bold"
+        android:hint="@string/translation"
+        android:includeFontPadding="false"
+        android:textColorHint="@color/colorTextHint"
+        android:textColor="@color/colorWhite"
+       />
+
+</LinearLayout>

@@ -1,28 +1,23 @@
 package com.example.testactivity.ui.dictionarydetail;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.R;
-import com.example.testactivity.adapters.DictionaryAdapter;
+import com.example.testactivity.adapters.DrawerAdapter;
 import com.example.testactivity.databinding.FragmentDictionaryDetailBinding;
 
-import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.List;
 
@@ -31,7 +26,7 @@ public class DictionaryDetailFragment extends Fragment {
     FragmentDictionaryDetailBinding binding;
     private RecyclerView dictionariesRecyclerView;
     private List<Dictionary> dictionaryList;
-    private DictionaryAdapter dictionaryAdapter;
+    private DrawerAdapter drawerAdapter;
 
     NavController navController;
     EditText inputWord, inputTranslation;
