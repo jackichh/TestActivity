@@ -1,5 +1,6 @@
 package com.example.testactivity.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,86 +15,103 @@ import com.example.testactivity.activities.HomeActivity;
 import com.example.testactivity.R;
 import com.example.testactivity.entities.Dictionary;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.DrawerViewHolder> {
+public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DictionaryViewHolder> {
 
-    private ArrayList<String> menuList;
-    private String menuItem;
+    private List<Dictionary> dictList;
+    private Dictionary dictItem;
     private Context mContext;
 
 
-    public String getMenuItem() {
-        return menuItem;
+    public Dictionary getDictItem() {
+        return dictItem;
     }
 
-    public void setMenuItem(String menuItem) {
-        this.menuItem = menuItem;
+    public void setDictItem(Dictionary dictItem) {
+        this.dictItem = dictItem;
     }
 
-    public DrawerAdapter(ArrayList<String> menuList, Context context) {
-        this.menuList = menuList;
+    public DrawerAdapter(List<Dictionary> dictList, Context context) {
+        this.dictList = dictList;
         this.mContext  = context;
     }
 
 
     @NonNull
     @Override
-    public DrawerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DictionaryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_dictionary,parent,false);
-        return new DrawerViewHolder(view);
+        return new DictionaryViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DrawerViewHolder holder, final int position) {
-        holder.menuName.setText((CharSequence) menuList.get(position));
-        holder.item.setOnClickListener(view -> {
+    public void onBindViewHolder(@NonNull DictionaryViewHolder holder, int position) {
+        holder.Name.setText(dictList.get(position).getDictionaryName());
+        holder.Item.setOnClickListener(view -> {
             if (mContext instanceof HomeActivity){
                 ((HomeActivity)mContext).onItemSelected(position);
             }
 
+        });
+        holder.Item.setOnLongClickListener(view -> {
+            Dictionary dictionary = new Dictionary();
+            int ID = dictList.get(holder.getAdapterPosition()).getId();
+
+            dictionary.setId(ID);
+
+
+            HomeActivity.dictionariesDatabase.dictionaryDao().deleteDeleteDictionary(dictionary);
+            if (mContext instanceof HomeActivity){
+                ((HomeActivity)mContext).onItemLongClick(position);
+            }
+
+            return true;
         });
 
     }
 
     @Override
     public int getItemCount() {
-        return menuList.size();
+        return dictList.size();
     }
 
-    public void addDrawerMenuList(ArrayList<String> menuList){
-        this.menuList = menuList;
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void addDrawerList(List<Dictionary> dictList){
+        this.dictList = dictList;
         notifyDataSetChanged();
     }
 
-    public void deleteDrawerMenuItem(ArrayList<String> menuList, int pos){
-        this.menuList = menuList;
-        menuList.remove(pos);
+    public void deleteDrawerItem(int pos){
+        dictList.remove(pos);
     }
 
     public String getItemText(int position) {
-        return menuList.get(position);
+        return dictList.get(position).getDictionaryName();
     }
 
-    public void addDrawerMenuItem(ArrayList<String> menuList, String menuItem){
-        this.menuList = menuList;
-        this.menuItem = menuItem;
-        menuList.add(menuItem);
+    @SuppressLint("NotifyDataSetChanged")
+    public void addDrawerItem(List<Dictionary> dictList, Dictionary dictItem){
+        this.dictList = dictList;
+        this.dictItem = dictItem;
+        dictList.add(dictItem);
         notifyDataSetChanged();
 
     }
 
-    static class DrawerViewHolder extends RecyclerView.ViewHolder{
-        TextView menuName;
-        CardView item;
-        DrawerViewHolder(@NonNull View itemView) {
+    static class DictionaryViewHolder extends RecyclerView.ViewHolder{
+        TextView Name;
+        CardView Item;
+        DictionaryViewHolder(@NonNull View itemView) {
             super(itemView);
-            menuName = itemView.findViewById(R.id.dictionary_item_title);
-            item = itemView.findViewById(R.id.dictionary_card);
+            Name = itemView.findViewById(R.id.dictionary_item_title);
+            Item = itemView.findViewById(R.id.dictionary_card);
         }
 
     }
 
 }
+

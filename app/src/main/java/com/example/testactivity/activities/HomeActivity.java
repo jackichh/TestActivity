@@ -2,12 +2,8 @@ package com.example.testactivity.activities;
 
 import static androidx.navigation.Navigation.findNavController;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.widget.Toast;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -16,25 +12,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
-
 import com.example.testactivity.R;
 import com.example.testactivity.adapters.DrawerAdapter;
 import com.example.testactivity.database.DictionariesDatabase;
 import com.example.testactivity.databinding.ActivityHomeBinding;
 import com.example.testactivity.entities.Dictionary;
 import com.example.testactivity.ui.dictionarydetail.DictionaryDetailViewModel;
-import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
+    AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
     NavController navController;
 
@@ -44,11 +33,8 @@ public class HomeActivity extends AppCompatActivity {
 
     DictionaryDetailViewModel dictionaryDetailViewModel;
 
-    ArrayList<String> list = new ArrayList<>();
-    int count = 0;
 
     private DrawerAdapter drawerAdapter;
-    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
 
         dictionariesDatabase = Room.databaseBuilder(getApplicationContext(),
                 DictionariesDatabase.class,
-                "dictdb").allowMainThreadQueries().build();
+                "dict").allowMainThreadQueries().build();
 
         setSupportActionBar(binding.appBarHome.toolbar);
 
@@ -75,53 +61,13 @@ public class HomeActivity extends AppCompatActivity {
 
         drawerAdapter = new DrawerAdapter(dictionaryList, getApplicationContext());
         binding.navMenu.dictionariesList.setAdapter(drawerAdapter);
-//        getDictionaries();
-
-        NavigationView navigationView = binding.navView;
 
         navController = findNavController(this, R.id.nav_host_fragment_content_home);
-
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.nav_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-//                .build();
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(binding.navView, navController);
 
         initListeners();
 
     }
 
-
-    @SuppressLint("NotifyDataSetChanged")
-    private void getDictionaries() {
-
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-
-        executor.execute(() -> {
-            //Background work here
-
-            List<Dictionary> dictionaries = DictionariesDatabase
-                    .getDatabase(getApplicationContext())
-                    .dictionaryDao().getAllDictionaries();
-
-
-            handler.post(() -> {
-                // pass to main thread
-                if (dictionaryList.size() == 0) {
-                    dictionaryList.addAll(dictionaries);
-
-                } else {
-                    dictionaryList.add(0, dictionaries.get(0));
-                    drawerAdapter.notifyDataSetChanged();
-                    //notesAdapter.notifyItemInserted(0);
-                }
-//                notesRecyclerView.setAdapter(new NotesAdapter(noteList));
-//                notesAdapter.notifyDataSetChanged();
-                //smoothScrollToPosition(0);
-            });
-        });
-    }
 
     public void onItemSelected(int item) {
         Toast.makeText(HomeActivity.this, drawerAdapter.getItemText(item), Toast.LENGTH_SHORT).show();
