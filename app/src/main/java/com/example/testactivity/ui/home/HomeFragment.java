@@ -11,13 +11,29 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 
+import com.example.testactivity.adapters.DrawerAdapter;
+import com.example.testactivity.database.DictionariesDatabase;
 import com.example.testactivity.databinding.FragmentHomeBinding;
+import com.example.testactivity.entities.Dictionary;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+
+    NavController navController;
+
+    public static DictionariesDatabase dictionariesDatabase;
+
+    List<Dictionary> dictionaryList;
+
+
+    private DrawerAdapter drawerAdapter;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

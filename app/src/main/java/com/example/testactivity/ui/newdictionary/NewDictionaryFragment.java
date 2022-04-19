@@ -2,7 +2,9 @@ package com.example.testactivity.ui.newdictionary;
 
 import static com.example.testactivity.activities.HomeActivity.dictionariesDatabase;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -27,6 +30,8 @@ import com.example.testactivity.database.DictionariesDatabase;
 import com.example.testactivity.databinding.FragmentNewDictionaryBinding;
 import com.example.testactivity.entities.Dictionary;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -36,7 +41,6 @@ public class NewDictionaryFragment extends Fragment {
     private FragmentNewDictionaryBinding binding;
 
     NavController navController;
-    private DictionaryDao noteDao;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -46,24 +50,21 @@ public class NewDictionaryFragment extends Fragment {
 
         binding = FragmentNewDictionaryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         EditText editText = binding.textNewDictionary;
 
-        newDictionaryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                editText.setHint(s);
-            }
-        });
+        newDictionaryViewModel.getText().observe(getViewLifecycleOwner(), editText::setHint);
         return root;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initListeners();
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void initListeners() {
         binding.fabNew.setOnClickListener(v -> {
             if (!binding.textNewDictionary.getText().toString().isEmpty()){
@@ -74,20 +75,13 @@ public class NewDictionaryFragment extends Fragment {
             Toast.makeText(requireContext(),
                     R.string.created,
                     Toast.LENGTH_SHORT).show();
-                    //((HomeActivity) requireActivity()).addDictionary(dictionary);
-                    navController.navigate(R.id.nav_home);}
+            ((HomeActivity) requireActivity()).addDictionary(dictionary);
+            navController.navigate(R.id.nav_home);
+        }
             else {
                 Toast.makeText(requireContext(), "Title can't be empty", Toast.LENGTH_SHORT).show();
             }
-
-
-
-
-
-
-
-                }
-        );
+        });
     }
 
     @Override

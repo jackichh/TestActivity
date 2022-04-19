@@ -3,12 +3,16 @@ package com.example.testactivity.activities;
 import static androidx.navigation.Navigation.findNavController;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -18,7 +22,6 @@ import com.example.testactivity.adapters.DrawerAdapter;
 import com.example.testactivity.database.DictionariesDatabase;
 import com.example.testactivity.databinding.ActivityHomeBinding;
 import com.example.testactivity.entities.Dictionary;
-import com.example.testactivity.ui.dictionarydetail.DictionaryDetailViewModel;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
@@ -29,10 +32,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public static DictionariesDatabase dictionariesDatabase;
 
-    List<Dictionary> dictionaryList;
-
-    DictionaryDetailViewModel dictionaryDetailViewModel;
-
+    List <Dictionary> dictionaryList;
 
     private DrawerAdapter drawerAdapter;
 
@@ -40,15 +40,15 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        dictionaryDetailViewModel = new ViewModelProvider(this).get(DictionaryDetailViewModel.class);
+
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        setSupportActionBar(binding.appBarHome.toolbar);
 
         dictionariesDatabase = Room.databaseBuilder(getApplicationContext(),
                 DictionariesDatabase.class,
                 "dict").allowMainThreadQueries().build();
-
-        setSupportActionBar(binding.appBarHome.toolbar);
 
         DrawerLayout drawer = binding.drawerLayout;
 
@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
 
         dictionaryList=dictionariesDatabase.dictionaryDao().getAllDictionaries();
 
-        drawerAdapter = new DrawerAdapter(dictionaryList, getApplicationContext());
+        drawerAdapter = new DrawerAdapter(dictionaryList, HomeActivity.this);
         binding.navMenu.dictionariesList.setAdapter(drawerAdapter);
 
         navController = findNavController(this, R.id.nav_host_fragment_content_home);
@@ -69,23 +69,51 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    public void onItemSelected(int item) {
-        Toast.makeText(HomeActivity.this, drawerAdapter.getItemText(item), Toast.LENGTH_SHORT).show();
-        dictionaryDetailViewModel.setText(drawerAdapter.getItemText(item));
+//      Back press      //
+//    boolean doubleBackToExitPressedOnce = false;
+//
+//    @Override
+//    public void onBackPressed() {
+//        if (doubleBackToExitPressedOnce) {
+//            super.onBackPressed();
+//            return;
+//        }
+//
+//        this.doubleBackToExitPressedOnce = true;
+//        Toast.makeText(this, "Please click again to exit", Toast.LENGTH_SHORT).show();
+//
+//        new Handler(Looper.getMainLooper()).postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
+//    }
+
+
+
+
+    public void onItemClicked(int position) {
+        String currentDictionaryName = drawerAdapter.getItemText(position);
+        Toast.makeText(HomeActivity.this, currentDictionaryName, Toast.LENGTH_SHORT).show();
         navController.navigate(R.id.nav_dictionary_detail);
         binding.drawerLayout.closeDrawer(GravityCompat.START);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar !=null)
+            actionBar.setTitle(currentDictionaryName);
     }
 
-    public void onItemLongClick(int item) {
-        drawerAdapter.deleteDrawerItem(item);
+    public void onItemLongClicked(int pos) {
+        Toast.makeText(HomeActivity.this, drawerAdapter.getItemText(pos) + " deleted", Toast.LENGTH_SHORT).show();
+        deleteDictionary(pos);
         binding.drawerLayout.closeDrawer(GravityCompat.START);
     }
 
 
 
-//    public void addDictionary(Dictionary name) {
-//        drawerAdapter.addDrawerMenuItem(dictionaryList, name);
-//    }
+    public void addDictionary(Dictionary item) {
+        drawerAdapter.addDrawerItem(dictionaryList, item);
+    }
+
+    public void deleteDictionary(int position){
+        drawerAdapter.deleteDrawerItem(position);
+
+    }
 
 
 
@@ -101,25 +129,6 @@ public class HomeActivity extends AppCompatActivity {
         //New dictionary
         binding.navMenu.addItem.setOnClickListener(view -> {
             navController.navigate(R.id.nav_new_dictionary);
-//            final EditText taskEditText = new EditText(this);
-//            AlertDialog dialog = new AlertDialog.Builder(this)
-//                    .setTitle("Set title of your dictionary")
-//                    .setView(taskEditText)
-//                    .setPositiveButton("Create", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            Toast.makeText(getApplicationContext(),
-//                                    R.string.created,
-//                                    Toast.LENGTH_SHORT).show();
-//                            addDictionary(taskEditText.getText().toString());
-//                            navController.navigate(R.id.nav_home);
-//                        }
-//                    })
-//                    .setNegativeButton("Cancel", null)
-//                    .create();
-//            dialog.show();
-            //mDrawerAdapter.addDrawerMenuItem(list, "Dictionary " + (count+1));
-            //count++;
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         });
 
@@ -132,6 +141,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //Dictionaries
+
 
 
     }

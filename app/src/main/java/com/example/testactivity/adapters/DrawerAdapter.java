@@ -19,7 +19,7 @@ import java.util.List;
 
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DictionaryViewHolder> {
 
-    private List<Dictionary> dictList;
+    private List <Dictionary> dictList;
     private Dictionary dictItem;
     private Context mContext;
 
@@ -32,7 +32,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Dictionary
         this.dictItem = dictItem;
     }
 
-    public DrawerAdapter(List<Dictionary> dictList, Context context) {
+    public DrawerAdapter(List <Dictionary> dictList, Context context) {
         this.dictList = dictList;
         this.mContext  = context;
     }
@@ -51,25 +51,18 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Dictionary
         holder.Name.setText(dictList.get(position).getDictionaryName());
         holder.Item.setOnClickListener(view -> {
             if (mContext instanceof HomeActivity){
-                ((HomeActivity)mContext).onItemSelected(position);
+                ((HomeActivity)mContext).onItemClicked(position);
             }
-
         });
         holder.Item.setOnLongClickListener(view -> {
-            Dictionary dictionary = new Dictionary();
+            Dictionary dictionary= new Dictionary();
             int ID = dictList.get(holder.getAdapterPosition()).getId();
-
             dictionary.setId(ID);
-
-
             HomeActivity.dictionariesDatabase.dictionaryDao().deleteDeleteDictionary(dictionary);
-            if (mContext instanceof HomeActivity){
-                ((HomeActivity)mContext).onItemLongClick(position);
-            }
-
+            ((HomeActivity)mContext).onItemLongClicked(position);
+            notifyItemChanged(position);
             return true;
         });
-
     }
 
     @Override
@@ -77,16 +70,11 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Dictionary
         return dictList.size();
     }
 
-
-
     @SuppressLint("NotifyDataSetChanged")
-    public void addDrawerList(List<Dictionary> dictList){
-        this.dictList = dictList;
-        notifyDataSetChanged();
-    }
-
     public void deleteDrawerItem(int pos){
         dictList.remove(pos);
+        notifyDataSetChanged();
+
     }
 
     public String getItemText(int position) {
