@@ -93,14 +93,8 @@ public class DictionaryContentAdapter extends RecyclerView.Adapter<DictionaryCon
             }
         });
 
-        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                                                       @Override
-                                                       public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                                           dictContentList.get(position).setChecked(isChecked);
-                                                       }
-                                                   }
-
-        );
+        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) ->
+                dictContentList.get(position).setChecked(isChecked));
 
     }
 

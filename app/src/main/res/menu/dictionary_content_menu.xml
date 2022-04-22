@@ -11,4 +11,10 @@
         android:title="@string/save"
         android:icon="@drawable/ic_baseline_save_as"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/new_option"
+        android:title="@string/new_"
+        android:icon="@drawable/ic_baseline_fiber_new"
+        app:showAsAction="ifRoom"/>
+
 </menu>

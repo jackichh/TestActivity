@@ -53,17 +53,7 @@ public class DictionaryDetailFragment extends Fragment {
         contentAdapter = new DictionaryContentAdapter(dictionaryContentList, requireContext());
         binding.dictionaryRecyclerView.setAdapter(contentAdapter);
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_home);
-        setupClicks();
 
-    }
-
-    public void setupClicks() {
-        //Add word
-        binding.addWord.setOnClickListener(view -> {
-
-            dictionaryContentList.add(new WordTranslationModel());
-            contentAdapter.notifyItemChanged(contentAdapter.getItemCount() - 1);
-        });
     }
 
 
@@ -91,7 +81,10 @@ public class DictionaryDetailFragment extends Fragment {
                 break;
             case R.id.clear_option:
                 return true;
-
+            case R.id.new_option:
+                dictionaryContentList.add(new WordTranslationModel());
+                contentAdapter.notifyItemChanged(contentAdapter.getItemCount() - 1);
+                break;
             default:
                 break;
         }

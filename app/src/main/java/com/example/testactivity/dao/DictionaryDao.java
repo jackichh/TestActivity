@@ -8,7 +8,6 @@ import androidx.room.Query;
 
 import com.example.testactivity.entities.Dictionary;
 
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -22,8 +21,11 @@ public interface DictionaryDao {
     @Query("SELECT * FROM dictionaries")
     List<Dictionary> getAllDictionaries();
 
+    @Query("SELECT dictionary_name FROM dictionaries")
+    List<String> getNames();
+
     @Query("SELECT * FROM dictionaries WHERE dictionary_name LIKE :search")
-    List<Dictionary> getAllWithDictionaryNameLike(String search);
+    List<Dictionary> getAllDictionaryWithNameLike(String search);
 
     @Delete
     void deleteDeleteDictionary(Dictionary dictionary);

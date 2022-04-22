@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorBackground">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dictionaryRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:paddingStart="10dp"
-        android:paddingEnd="0dp"
-        android:paddingBottom="12dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_container_dictionary"
-        tools:itemCount="1"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dictionaryRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="@dimen/_12sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_container_dictionary"
+            tools:itemCount="0"/>
 
-    <ImageView
-        android:id="@+id/addWord"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:background="@drawable/add_new_word_to_dictionary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dictionaryRecyclerView"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/ic_baseline_fiber_new"
-        />
+<!--        <ImageView-->
+<!--            android:id="@+id/addWord"-->
+<!--            android:layout_width="@dimen/_36sdp"-->
+<!--            android:layout_height="@dimen/_32sdp"-->
+<!--            android:background="@drawable/add_new_word_to_dictionary"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/dictionaryRecyclerView"-->
+<!--            android:layout_marginTop="@dimen/_12sdp"-->
+<!--            android:layout_marginEnd="@dimen/_32sdp"-->
+<!--            android:src="@drawable/ic_baseline_fiber_new"-->
+<!--            />-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout >

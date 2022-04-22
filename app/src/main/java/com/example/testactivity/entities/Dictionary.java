@@ -1,13 +1,10 @@
 package com.example.testactivity.entities;
 
-import android.util.ArrayMap;
-
 import java.io.Serializable;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverters;
 
 
 @Entity (tableName = "dictionaries")
@@ -20,26 +17,26 @@ public class Dictionary implements Serializable {
         @ColumnInfo(name = "dictionary_name")
         private String dictionaryName;
 
-        @ColumnInfo(name = "word")
-        private String word;
+        @ColumnInfo(name = "words")
+        private String words;
 
-        @ColumnInfo(name = "translation")
-        private String translation;
+        @ColumnInfo(name = "translations")
+        private String translations;
 
-        public String getWord() {
-                return word;
+        public String getWords() {
+                return words;
         }
 
-        public void setWord(String word) {
-                this.word = word;
+        public void setWords(String words) {
+                this.words = words;
         }
 
-        public String getTranslation() {
-                return translation;
+        public String getTranslations() {
+                return translations;
         }
 
-        public void setTranslation(String translation) {
-                this.translation = translation;
+        public void setTranslations(String translations) {
+                this.translations = translations;
         }
 
         public int getId() {
