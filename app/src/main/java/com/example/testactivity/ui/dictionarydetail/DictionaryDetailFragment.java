@@ -1,10 +1,7 @@
 package com.example.testactivity.ui.dictionarydetail;
 
-import static com.example.testactivity.activities.HomeActivity.dictionariesDatabase;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,18 +17,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.R;
 import com.example.testactivity.adapters.DictionaryContentAdapter;
-import com.example.testactivity.adapters.DrawerAdapter;
 import com.example.testactivity.databinding.FragmentDictionaryDetailBinding;
 import com.example.testactivity.models.WordTranslationModel;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.List;
 
 public class DictionaryDetailFragment extends Fragment {
 
@@ -47,30 +39,30 @@ public class DictionaryDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        binding = FragmentDictionaryDetailBinding.inflate(inflater, container, false);
-
-        contentAdapter = new DictionaryContentAdapter(dictionaryContentList, requireActivity());
-        binding.dictionaryRecyclerView.setAdapter(contentAdapter);
-
-
-        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_home);
-
         DictionaryDetailViewModel dictionaryDetailViewModel = new ViewModelProvider(this).get(DictionaryDetailViewModel.class);
 
-        View root = binding.getRoot();
-
-        addingWord();
-
-        return root;
+        binding = FragmentDictionaryDetailBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
-    public void addingWord() {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        contentAdapter = new DictionaryContentAdapter(dictionaryContentList, requireContext());
+        binding.dictionaryRecyclerView.setAdapter(contentAdapter);
+        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_home);
+        setupClicks();
+
+    }
+
+    public void setupClicks() {
         //Add word
         binding.addWord.setOnClickListener(view -> {
-            //contentAdapter.addDictItem(dictionaryContentList, emptyWordTranslationModel);
-//            contentAdapter.addWordSpace(dictionaryContentList);
-            dictionaryContentList.add(new WordTranslationModel("temp", "temp"));
-            contentAdapter = new DictionaryContentAdapter(dictionaryContentList, requireActivity());
+
+            dictionaryContentList.add(new WordTranslationModel());
+            contentAdapter.notifyItemChanged(contentAdapter.getItemCount() - 1);
         });
     }
 

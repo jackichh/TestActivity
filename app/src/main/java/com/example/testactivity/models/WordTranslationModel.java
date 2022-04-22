@@ -1,6 +1,7 @@
 package com.example.testactivity.models;
 
 public class WordTranslationModel {
+    private boolean isChecked;
     private String word;
     private String translation;
 
@@ -10,6 +11,14 @@ public class WordTranslationModel {
     }
 
     public WordTranslationModel() {
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 
     public String getWord() {
