@@ -36,17 +36,12 @@ import java.util.List;
 public class DictionaryDetailFragment extends Fragment {
 
     FragmentDictionaryDetailBinding binding;
-    private ArrayList<WordTranslationModel> dictionaryContentList;
-    WordTranslationModel wordTranslationModel;
+    private ArrayList<WordTranslationModel> dictionaryContentList = new ArrayList<>();
+    WordTranslationModel emptyWordTranslationModel;
     int size = 10;
     NavController navController;
     EditText inputWord, inputTranslation;
-
     private DictionaryContentAdapter contentAdapter;
-
-    public static DictionaryDetailFragment newInstance() {
-        return new DictionaryDetailFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -54,9 +49,7 @@ public class DictionaryDetailFragment extends Fragment {
 
         binding = FragmentDictionaryDetailBinding.inflate(inflater, container, false);
 
-
-
-        contentAdapter = new DictionaryContentAdapter(size, dictionaryContentList, requireActivity());
+        contentAdapter = new DictionaryContentAdapter(dictionaryContentList, requireActivity());
         binding.dictionaryRecyclerView.setAdapter(contentAdapter);
 
 
@@ -74,8 +67,10 @@ public class DictionaryDetailFragment extends Fragment {
     public void addingWord() {
         //Add word
         binding.addWord.setOnClickListener(view -> {
-            //contentAdapter.addDictItem(dictionaryContentList, wordTranslationModel);
-            contentAdapter.addWordSpace();
+            //contentAdapter.addDictItem(dictionaryContentList, emptyWordTranslationModel);
+//            contentAdapter.addWordSpace(dictionaryContentList);
+            dictionaryContentList.add(new WordTranslationModel("temp", "temp"));
+            contentAdapter = new DictionaryContentAdapter(dictionaryContentList, requireActivity());
         });
     }
 
