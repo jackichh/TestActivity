@@ -20,17 +20,8 @@ import java.util.List;
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.DictionaryViewHolder> {
 
     private List <Dictionary> dictList;
-    private Dictionary dictItem;
-    private Context mContext;
+    private final Context mContext;
 
-
-    public Dictionary getDictItem() {
-        return dictItem;
-    }
-
-    public void setDictItem(Dictionary dictItem) {
-        this.dictItem = dictItem;
-    }
 
     public DrawerAdapter(List <Dictionary> dictList, Context context) {
         this.dictList = dictList;
@@ -57,8 +48,9 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Dictionary
         holder.Item.setOnLongClickListener(view -> {
             Dictionary dictionary= new Dictionary();
             int ID = dictList.get(holder.getAdapterPosition()).getId();
-            dictionary.setId(ID);
-            HomeActivity.dictionariesDatabase.dictionaryDao().deleteDeleteDictionary(dictionary);
+            String Name = dictList.get(holder.getAdapterPosition()).getDictionaryName();
+            dictionary.setDictionaryName(Name);
+            HomeActivity.dictionariesDatabase.dictionaryDao().deleteDictionariesWithNameLike(dictionary.getDictionaryName());
             ((HomeActivity)mContext).onItemLongClicked(position);
             notifyItemChanged(position);
             return true;
@@ -77,14 +69,17 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Dictionary
 
     }
 
-    public String getItemText(int position) {
-        return dictList.get(position).getDictionaryName();
+    public int getItemPos(int position) {
+        return dictList.get(position).getId();
+    }
+
+    public String getItemText(int pos){
+        return dictList.get(pos).getDictionaryName();
     }
 
     @SuppressLint("NotifyDataSetChanged")
     public void addDrawerItem(List<Dictionary> dictList, Dictionary dictItem){
         this.dictList = dictList;
-        this.dictItem = dictItem;
         dictList.add(dictItem);
         notifyDataSetChanged();
 

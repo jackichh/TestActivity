@@ -1,15 +1,12 @@
 package com.example.testactivity.entities;
 
-import java.io.Serializable;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 
-@Entity (tableName = "dictionaries")
-
-public class Dictionary implements Serializable {
+@Entity
+public class Dictionary{
 
         @PrimaryKey(autoGenerate = true)
         private int id;
@@ -17,26 +14,31 @@ public class Dictionary implements Serializable {
         @ColumnInfo(name = "dictionary_name")
         private String dictionaryName;
 
-        @ColumnInfo(name = "words")
-        private String words;
+        @ColumnInfo(name = "word")
+        private String word;
 
-        @ColumnInfo(name = "translations")
-        private String translations;
+        @ColumnInfo(name = "translation")
+        private String translation;
 
-        public String getWords() {
-                return words;
+        @ColumnInfo(name = "is_checked")
+        private boolean isChecked;
+
+        /////////////////////////////////////////
+
+        public String getWord() {
+                return word;
         }
 
-        public void setWords(String words) {
-                this.words = words;
+        public void setWord(String word) {
+                this.word = word;
         }
 
-        public String getTranslations() {
-                return translations;
+        public String getTranslation() {
+                return translation;
         }
 
-        public void setTranslations(String translations) {
-                this.translations = translations;
+        public void setTranslation(String translations) {
+                this.translation = translations;
         }
 
         public int getId() {
@@ -53,5 +55,13 @@ public class Dictionary implements Serializable {
 
         public void setDictionaryName(String dictionaryName) {
                 this.dictionaryName = dictionaryName;
+        }
+
+        public boolean isChecked() {
+                return isChecked;
+        }
+
+        public void setChecked(boolean checked) {
+                isChecked = checked;
         }
 }

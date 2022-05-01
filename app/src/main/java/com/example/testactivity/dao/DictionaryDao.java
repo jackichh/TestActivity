@@ -18,14 +18,17 @@ public interface DictionaryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertDictionary(Dictionary dictionary);
 
-    @Query("SELECT * FROM dictionaries")
+    @Query("SELECT * FROM dictionary")
     List<Dictionary> getAllDictionaries();
 
-    @Query("SELECT dictionary_name FROM dictionaries")
+    @Query("SELECT dictionary_name FROM dictionary")
     List<String> getNames();
 
-    @Query("SELECT * FROM dictionaries WHERE dictionary_name LIKE :search")
+    @Query("SELECT * FROM dictionary WHERE dictionary_name LIKE :search")
     List<Dictionary> getAllDictionaryWithNameLike(String search);
+
+    @Query("DELETE FROM dictionary WHERE dictionary_name LIKE :search")
+    void deleteDictionariesWithNameLike(String search);
 
     @Delete
     void deleteDeleteDictionary(Dictionary dictionary);

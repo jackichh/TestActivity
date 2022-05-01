@@ -2,12 +2,8 @@ package com.example.testactivity.ui.newdictionary;
 
 import static com.example.testactivity.activities.HomeActivity.dictionariesDatabase;
 
-import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,23 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.example.testactivity.activities.HomeActivity;
 import com.example.testactivity.R;
-import com.example.testactivity.dao.DictionaryDao;
-import com.example.testactivity.database.DictionariesDatabase;
+import com.example.testactivity.activities.HomeActivity;
 import com.example.testactivity.databinding.FragmentNewDictionaryBinding;
 import com.example.testactivity.entities.Dictionary;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class NewDictionaryFragment extends Fragment {
 

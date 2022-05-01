@@ -23,9 +23,8 @@
     <string name="translation">Translation</string>
     <string name="word">Word</string>
     <string name="nothing" />
-    <string name="label">My dictionary</string>
+    <string name="label">Smartery</string>
     <string name="save">Save</string>
     <string name="clear">Clear</string>
-    <string name="name_of_program">Smartery</string>
     <string name="new_">New</string>
 </resources>

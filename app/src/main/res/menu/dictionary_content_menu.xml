@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/clear_option"
-        android:title="@string/clear"
-        android:icon="@drawable/ic_baseline_refresh"
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/save_option"
-        android:title="@string/save"
-        android:icon="@drawable/ic_baseline_save_as"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/search_option"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="ifRoom"
+        app:actionViewClass="android.widget.SearchView" />
+
     <item
         android:id="@+id/new_option"
         android:title="@string/new_"
         android:icon="@drawable/ic_baseline_fiber_new"
         app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/save_option"
+        android:title="@string/save"/>
+
+    <item
+        android:id="@+id/clear_option"
+        android:title="@string/clear"/>
+
 
 </menu>

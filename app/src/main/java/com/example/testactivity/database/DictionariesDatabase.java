@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 import com.example.testactivity.dao.DictionaryDao;
 import com.example.testactivity.entities.Dictionary;
 
-@Database(entities = Dictionary.class, version = 1, exportSchema = false)
+@Database(entities = {Dictionary.class}, version = 1)
 
 public abstract class DictionariesDatabase extends RoomDatabase {
 

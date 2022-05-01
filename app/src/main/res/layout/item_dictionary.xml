@@ -19,6 +19,6 @@
         android:padding="12dp"
         android:textColor="@color/colorWhite"
         android:textSize="14sp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/ubuntu_medium"
         tools:text="Text"/>
 </androidx.cardview.widget.CardView>

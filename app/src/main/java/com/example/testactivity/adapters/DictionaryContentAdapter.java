@@ -9,8 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -21,23 +22,18 @@ import com.example.testactivity.models.WordTranslationModel;
 
 import java.util.ArrayList;
 
-public class DictionaryContentAdapter extends RecyclerView.Adapter<DictionaryContentAdapter.DictionaryContentViewHolder> {
-    private ArrayList<WordTranslationModel> dictContentList;
+public class DictionaryContentAdapter extends RecyclerView.Adapter<DictionaryContentAdapter.DictionaryContentViewHolder> implements Filterable {
+    private ArrayList<WordTranslationModel> dictContentList, dictContentListFull;
 
     private WordTranslationModel dictItem;
-    private int tempSize;
+    private final Context context;
 
-    private String[] words;
-    private String[] translations;
-    private Context context;
-
-    boolean isWordChanged = false;
-    boolean isTranslationChanged = false;
 
 
     public DictionaryContentAdapter(ArrayList<WordTranslationModel> dictContentList, Context context) {
         this.dictContentList = dictContentList;
         this.context = context;
+        dictContentListFull = new ArrayList<>(dictContentList);
     }
 
 
@@ -103,23 +99,6 @@ public class DictionaryContentAdapter extends RecyclerView.Adapter<DictionaryCon
         return dictContentList.size();
     }
 
-
-    public void addDictItem(ArrayList<WordTranslationModel> dictContentList, WordTranslationModel dictItem) {
-        this.dictContentList = dictContentList;
-        this.dictItem = dictItem;
-        dictContentList.add(dictItem);
-        notifyDataSetChanged();
-    }
-
-    public void addWordSpace(ArrayList<WordTranslationModel> dictContentList) {
-        this.dictContentList = dictContentList;
-        WordTranslationModel emptyModel = new WordTranslationModel();
-        emptyModel.setWord("");
-        emptyModel.setTranslation("");
-        dictContentList.add(emptyModel);
-    }
-
-
     static class DictionaryContentViewHolder extends RecyclerView.ViewHolder {
         EditText word, translation;
         LinearLayout item;
@@ -135,14 +114,6 @@ public class DictionaryContentAdapter extends RecyclerView.Adapter<DictionaryCon
 
     }
 
-    public int getTempSize() {
-        return tempSize;
-    }
-
-    public void setTempSize(int tempSize) {
-        this.tempSize = tempSize;
-    }
-
     public ArrayList<WordTranslationModel> getDictContentList() {
         return dictContentList;
     }
@@ -151,27 +122,40 @@ public class DictionaryContentAdapter extends RecyclerView.Adapter<DictionaryCon
         this.dictContentList = dictList;
     }
 
-    public WordTranslationModel getDictItem() {
-        return dictItem;
+    @Override
+    public Filter getFilter() {
+        return dictionariesFilter;
     }
+    private Filter dictionariesFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<WordTranslationModel> filteredList = new ArrayList<>();
 
-    public void setDictItem(WordTranslationModel dictItem) {
-        this.dictItem = dictItem;
-    }
+            if(constraint == null || constraint.length() == 0){
+                filteredList.addAll(dictContentListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
 
-    public String[] getWords() {
-        return words;
-    }
+                for (WordTranslationModel item : dictContentListFull) {
+                    if(item.getWord().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
 
-    public void setWords(String[] words) {
-        this.words = words;
-    }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
 
-    public String[] getTranslations() {
-        return translations;
-    }
+            return results;
+        }
 
-    public void setTranslations(String[] translations) {
-        this.translations = translations;
-    }
+        @SuppressLint("NotifyDataSetChanged")
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            dictContentList.clear();
+            dictContentList.addAll((ArrayList) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
 }
