@@ -62,11 +62,12 @@ public class HomeActivity extends AppCompatActivity {
         for (int i = 0; i < dictionaryList.size(); i++) {
             dictionaryNames.add(dictionaryList.get(i).getDictionaryName());
         }
+        newList.clear();
+        newDictionaryNames.clear();
         for (int i = 0; i < dictionaryList.size(); i++) {
             if(!newDictionaryNames.contains(dictionaryList.get(i).getDictionaryName())){
                 newDictionaryNames.add(dictionaryList.get(i).getDictionaryName());
-                Dictionary temp=dictionaryList.get(i);
-                newList.add(temp);
+                newList.add(dictionaryList.get(i));
             }
         }
 
@@ -83,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
     public void onItemClicked(int position) {
         Bundle bundle = new Bundle();
         bundle.putInt("id", position);
-        bundle.putString("name", dictionaryList.get(position).getDictionaryName());
+        bundle.putString("name", newList.get(position).getDictionaryName());
         navController.navigate(R.id.nav_dictionary_detail, bundle);
         binding.drawerLayout.closeDrawer(GravityCompat.START);
     }
@@ -97,7 +98,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     public void addDictionary(Dictionary item) {
-        drawerAdapter.addDrawerItem(dictionaryList, item);
+        drawerAdapter.addDrawerItem(newList, item);
     }
 
     public void deleteDictionary(int position){
