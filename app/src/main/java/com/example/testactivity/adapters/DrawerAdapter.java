@@ -65,8 +65,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Dictionary
     @SuppressLint("NotifyDataSetChanged")
     public void deleteDrawerItem(int pos){
         dictList.remove(pos);
-        notifyDataSetChanged();
-
+        notifyItemChanged(pos);
     }
 
     public int getItemPos(int position) {

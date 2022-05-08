@@ -3,6 +3,7 @@ package com.example.testactivity.ui.dictionarydetail;
 import static com.example.testactivity.activities.HomeActivity.dictionariesDatabase;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,34 +17,37 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.R;
 import com.example.testactivity.adapters.DictionaryContentAdapter;
 import com.example.testactivity.databinding.FragmentDictionaryDetailBinding;
 import com.example.testactivity.entities.Dictionary;
+import com.example.testactivity.interfaces.DetailFragmentOnBackPressed;
 import com.example.testactivity.models.WordTranslationModel;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DictionaryDetailFragment extends Fragment {
+public class DictionaryDetailFragment extends Fragment implements DetailFragmentOnBackPressed {
 
     FragmentDictionaryDetailBinding binding;
     ArrayList<WordTranslationModel> dictionaryContentList = new ArrayList<>();
     List<Dictionary> list;
     int id, var = 0;
+    boolean flag = false;
     String name;
     NavController navController;
     private DictionaryContentAdapter contentAdapter;
+    private int delCount = 0;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
-        DictionaryDetailViewModel dictionaryDetailViewModel = new ViewModelProvider(this).get(DictionaryDetailViewModel.class);
 
         binding = FragmentDictionaryDetailBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -73,7 +77,40 @@ public class DictionaryDetailFragment extends Fragment {
         binding.dictionaryRecyclerView.setAdapter(contentAdapter);
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_home);
 
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(binding.dictionaryRecyclerView);
     }
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getAdapterPosition();
+            if (position <= list.size() - 2) {
+                Dictionary deleteDict = new Dictionary();
+                deleteDict.setId(list.get(position).getId());
+                deleteDict.setWord(dictionaryContentList.get(position).getWord());
+                deleteDict.setTranslation(dictionaryContentList.get(position).getTranslation());
+                deleteDict.setDictionaryName(name);
+
+                if (deleteDict.getWord() != null && deleteDict.getTranslation() != null) {
+                    dictionariesDatabase.dictionaryDao().deleteDeleteDictionary(deleteDict);
+                    Snackbar.make(binding.dictionaryRecyclerView, "Deleted", Snackbar.LENGTH_SHORT).setAction("Undo", v -> {
+                        dictionariesDatabase.dictionaryDao().insertDictionary(deleteDict);
+                        dictionaryContentList.add(new WordTranslationModel(deleteDict.getWord(), deleteDict.getTranslation()));
+                        contentAdapter.notifyItemInserted(position);
+                    }).show();
+                }
+            }
+            dictionaryContentList.remove(position);
+            contentAdapter.notifyItemRemoved(position);
+
+        }
+    };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,20 +145,14 @@ public class DictionaryDetailFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-
-            case R.id.search_option:
-
-                searchOption();
-                break;
-                
             case R.id.save_option:
                 saveOption();
                 break;
-                
+
             case R.id.clear_option:
                 clearOption();
                 break;
-                
+
             case R.id.new_option:
                 newOption();
                 break;
@@ -132,19 +163,36 @@ public class DictionaryDetailFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void searchOption() {
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     private void clearOption() {
+        if (!dictionaryContentList.isEmpty()) {
+            AlertDialog.Builder ad = new AlertDialog.Builder(getContext());
+            ad.setCancelable(false);
+            ad.setTitle("Clear");
+            ad.setMessage("Do you want to empty your dictionary?");
+            ad.setPositiveButton("Yes", (dialog, which) -> {
+                dictionariesDatabase.dictionaryDao().deleteDictionariesWithNameLike(name);
+                Dictionary dict = new Dictionary();
+                dict.setDictionaryName(name);
+                dictionaryContentList.clear();
+                dictionariesDatabase.dictionaryDao().insertDictionary(dict);
+                contentAdapter.notifyDataSetChanged();
+            });
+            ad.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+            ad.show();
+        }
     }
 
     private void newOption() {
+        if (!flag) flag = true;
         var++;
+        delCount++;
         dictionaryContentList.add(new WordTranslationModel());
         contentAdapter.notifyItemChanged(contentAdapter.getItemCount() - 1);
     }
 
     private void saveOption() {
+        if (flag) flag = false;
         ArrayList<WordTranslationModel> wtList;
         wtList = dictionaryContentList;
 
@@ -159,20 +207,32 @@ public class DictionaryDetailFragment extends Fragment {
                 }
             }
         }
-
-
         Toast.makeText(requireContext(), "saved", Toast.LENGTH_SHORT).show();
-
-        onDestroyView();
-        navController.navigate(R.id.nav_home);
+        //onDestroyView();
+        //navController.navigate(R.id.nav_home);
     }
-    
-    
 
     @Override
     public void onDestroyView() {
+        if (flag) {
+            AlertDialog.Builder ad = new AlertDialog.Builder(getContext());
+            ad.setCancelable(false);
+            ad.setTitle("Save");
+            ad.setMessage("Your changes won't be saved!");
+            ad.setPositiveButton("Save", (dialog, which) -> {
+                saveOption();
+            });
+            ad.setNegativeButton("Ok", (dialog, which) -> {
+                dialog.dismiss();
+            });
+            ad.show();
+        }
         super.onDestroyView();
         binding = null;
     }
 
+    @Override
+    public boolean onBackPressed() {
+        return true;
+    }
 }

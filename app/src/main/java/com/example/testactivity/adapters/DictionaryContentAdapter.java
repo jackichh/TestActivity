@@ -99,6 +99,12 @@ public class DictionaryContentAdapter extends RecyclerView.Adapter<DictionaryCon
         return dictContentList.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    public void deleteItem(int pos){
+        dictContentList.remove(pos);
+        notifyDataSetChanged();
+    }
+
     static class DictionaryContentViewHolder extends RecyclerView.ViewHolder {
         EditText word, translation;
         LinearLayout item;

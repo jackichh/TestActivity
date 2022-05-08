@@ -92,6 +92,7 @@ public class HomeActivity extends AppCompatActivity {
     public void onItemLongClicked(int pos) {
         Toast.makeText(HomeActivity.this, drawerAdapter.getItemText(pos) + " deleted", Toast.LENGTH_SHORT).show();
         deleteDictionary(pos);
+        navController.navigate(R.id.nav_home);
         binding.drawerLayout.closeDrawer(GravityCompat.START);
     }
 
