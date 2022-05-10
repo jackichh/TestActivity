@@ -17,8 +17,8 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/save_option"
-        android:title="@string/save"/>
+        android:id="@+id/delete_option"
+        android:title="@string/delete"/>
 
     <item
         android:id="@+id/clear_option"

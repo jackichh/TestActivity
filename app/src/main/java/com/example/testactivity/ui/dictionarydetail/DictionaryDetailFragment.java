@@ -90,21 +90,16 @@ public class DictionaryDetailFragment extends Fragment implements DetailFragment
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             int position = viewHolder.getAdapterPosition();
-            if (position <= list.size() - 2) {
-                Dictionary deleteDict = new Dictionary();
-                deleteDict.setId(list.get(position).getId());
-                deleteDict.setWord(dictionaryContentList.get(position).getWord());
-                deleteDict.setTranslation(dictionaryContentList.get(position).getTranslation());
-                deleteDict.setDictionaryName(name);
 
-                if (deleteDict.getWord() != null && deleteDict.getTranslation() != null) {
-                    dictionariesDatabase.dictionaryDao().deleteDeleteDictionary(deleteDict);
-                    Snackbar.make(binding.dictionaryRecyclerView, "Deleted", Snackbar.LENGTH_SHORT).setAction("Undo", v -> {
-                        dictionariesDatabase.dictionaryDao().insertDictionary(deleteDict);
-                        dictionaryContentList.add(new WordTranslationModel(deleteDict.getWord(), deleteDict.getTranslation()));
-                        contentAdapter.notifyItemInserted(position);
-                    }).show();
-                }
+            WordTranslationModel deleteDict = new WordTranslationModel();
+            deleteDict.setWord(dictionaryContentList.get(position).getWord());
+            deleteDict.setTranslation(dictionaryContentList.get(position).getTranslation());
+
+            if (deleteDict.getWord() != null && deleteDict.getTranslation() != null) {
+                Snackbar.make(binding.dictionaryRecyclerView, "Deleted", Snackbar.LENGTH_SHORT).setAction("Undo", v -> {
+                    dictionaryContentList.add(new WordTranslationModel(deleteDict.getWord(), deleteDict.getTranslation()));
+                    contentAdapter.notifyItemInserted(position);
+                }).show();
             }
             dictionaryContentList.remove(position);
             contentAdapter.notifyItemRemoved(position);
@@ -145,8 +140,8 @@ public class DictionaryDetailFragment extends Fragment implements DetailFragment
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.save_option:
-                saveOption();
+            case R.id.delete_option:
+                deleteOption();
                 break;
 
             case R.id.clear_option:
@@ -184,15 +179,21 @@ public class DictionaryDetailFragment extends Fragment implements DetailFragment
     }
 
     private void newOption() {
-        if (!flag) flag = true;
         var++;
-        delCount++;
         dictionaryContentList.add(new WordTranslationModel());
-        contentAdapter.notifyItemChanged(contentAdapter.getItemCount() - 1);
+        contentAdapter.notifyItemInserted(contentAdapter.getItemCount() - 1);
     }
 
-    private void saveOption() {
-        if (flag) flag = false;
+    private void deleteOption() {
+        for (int i = 0; i < dictionaryContentList.size(); i++) {
+            if (dictionaryContentList.get(i).isChecked()) {
+
+            }
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
         ArrayList<WordTranslationModel> wtList;
         wtList = dictionaryContentList;
 
@@ -208,25 +209,6 @@ public class DictionaryDetailFragment extends Fragment implements DetailFragment
             }
         }
         Toast.makeText(requireContext(), "saved", Toast.LENGTH_SHORT).show();
-        //onDestroyView();
-        //navController.navigate(R.id.nav_home);
-    }
-
-    @Override
-    public void onDestroyView() {
-        if (flag) {
-            AlertDialog.Builder ad = new AlertDialog.Builder(getContext());
-            ad.setCancelable(false);
-            ad.setTitle("Save");
-            ad.setMessage("Your changes won't be saved!");
-            ad.setPositiveButton("Save", (dialog, which) -> {
-                saveOption();
-            });
-            ad.setNegativeButton("Ok", (dialog, which) -> {
-                dialog.dismiss();
-            });
-            ad.show();
-        }
         super.onDestroyView();
         binding = null;
     }

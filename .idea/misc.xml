@@ -11,13 +11,14 @@
         <entry key="..\:/TestActivity/app/src/main/res/layout/content_home.xml" value="0.1" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_about_us.xml" value="0.271286231884058" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_gallery.xml" value="0.21875" />
-        <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_home.xml" value="0.21875" />
+        <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_new_dicitonary.xml" value="0.21875" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_new_dictionary.xml" value="0.1828125" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/fragment_slideshow.xml" value="0.21875" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/item_container_dictionary.xml" value="0.2296875" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/item_dictionary.xml" value="0.2296875" />
+        <entry key="..\:/TestActivity/app/src/main/res/layout/item_phonetics_recycler.xml" value="0.1" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/nav_header_home.xml" value="0.21875" />
         <entry key="..\:/TestActivity/app/src/main/res/layout/your_item.xml" value="0.25181159420289856" />
         <entry key="..\:/TestActivity/app/src/main/res/menu/activity_home_drawer.xml" value="0.33229166666666665" />

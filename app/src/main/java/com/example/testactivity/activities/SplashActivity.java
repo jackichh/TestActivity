@@ -1,4 +1,4 @@
-package com.example.testactivity.splashactivity;
+package com.example.testactivity.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.testactivity.activities.HomeActivity;
 
 public class SplashActivity extends AppCompatActivity {
     @Override

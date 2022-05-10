@@ -16,7 +16,7 @@
     <color name="colorWhite">#FFFFFFFF</color>
     <color name="colorPrimary">#292929</color>
     <color name="colorPrimaryDark">#242424</color>
-    <color name="colorAccent">#FDBE3B</color>
+    <color name="colorYellow">#FDBE3B</color>
     <color name="colorSearchIcon">#DBDBDB</color>
     <color name="colorTextHint">#7B7B7B</color>
     <color name="colorQuickActionsBackground">#2F2D2E</color>
