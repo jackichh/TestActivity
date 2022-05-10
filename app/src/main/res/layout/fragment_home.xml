@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <SearchView
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_view"
                 app:defaultQueryHint="Type word"
                 app:iconifiedByDefault="false"
@@ -36,7 +36,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/word_name"
+                android:id="@+id/text_word"
                 android:textSize="24sp"
                 android:text="Word"
                 android:textAlignment="center"

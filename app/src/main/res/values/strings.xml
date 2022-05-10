@@ -28,4 +28,9 @@
     <string name="clear">Clear</string>
     <string name="new_">New</string>
     <string name="delete">Delete</string>
+    <string name="ha_lo">ha-lo</string>
+    <string name="definition">Definition</string>
+    <string name="example">Example</string>
+    <string name="synonyms">Synonyms</string>
+    <string name="antonyms">Antonyms</string>
 </resources>
