@@ -1,4 +1,4 @@
-package com.example.testactivity.ui.home;
+package com.example.testactivity.ui.Main.Home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

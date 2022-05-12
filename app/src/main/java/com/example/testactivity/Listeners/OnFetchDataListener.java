@@ -1,6 +1,6 @@
 package com.example.testactivity.Listeners;
 
-import com.example.testactivity.models.APIResponse;
+import com.example.testactivity.Models.APIResponse;
 
 public interface OnFetchDataListener {
     void onFetchData(APIResponse apiResponse, String message);

@@ -1,4 +1,4 @@
-package com.example.testactivity.models;
+package com.example.testactivity.Models;
 
 public class WordTranslationModel {
     private boolean isChecked;

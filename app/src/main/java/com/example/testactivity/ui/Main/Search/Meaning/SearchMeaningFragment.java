@@ -1,4 +1,4 @@
-package com.example.testactivity.ui.home;
+package com.example.testactivity.ui.Main.Search.Meaning;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -20,12 +20,12 @@ import com.example.testactivity.Listeners.OnFetchDataListener;
 import com.example.testactivity.RequestManagers.RequestManager;
 import com.example.testactivity.adapters.MeaningAdapter;
 import com.example.testactivity.adapters.PhoneticsAdapter;
-import com.example.testactivity.databinding.FragmentHomeBinding;
-import com.example.testactivity.models.APIResponse;
+import com.example.testactivity.databinding.FragmentSearchMeaningBinding;
+import com.example.testactivity.Models.APIResponse;
 
-public class HomeFragment extends Fragment {
+public class SearchMeaningFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentSearchMeaningBinding binding;
 
     SearchView searchView;
     TextView textView_word;
@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentSearchMeaningBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
     }
@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         progressDialog.setTitle("Loading..");
         progressDialog.show();
         RequestManager manager = new RequestManager(getContext());
-        manager.getWordMeaning(listener, "hello");
+        manager.getWordMeaning(listener, "halo");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -107,9 +107,4 @@ public class HomeFragment extends Fragment {
         recyclerView_meanings.setAdapter(meaningAdapter);
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 }

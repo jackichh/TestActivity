@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.R;
 import com.example.testactivity.ViewHolders.DefinitionViewHolder;
-import com.example.testactivity.models.Definitions;
+import com.example.testactivity.Models.Definitions;
 
 import java.util.List;
 

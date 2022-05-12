@@ -27,7 +27,7 @@ import com.example.testactivity.adapters.DictionaryContentAdapter;
 import com.example.testactivity.databinding.FragmentDictionaryDetailBinding;
 import com.example.testactivity.entities.Dictionary;
 import com.example.testactivity.interfaces.DetailFragmentOnBackPressed;
-import com.example.testactivity.models.WordTranslationModel;
+import com.example.testactivity.Models.WordTranslationModel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -43,7 +43,6 @@ public class DictionaryDetailFragment extends Fragment implements DetailFragment
     String name;
     NavController navController;
     private DictionaryContentAdapter contentAdapter;
-    private int delCount = 0;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -197,15 +196,18 @@ public class DictionaryDetailFragment extends Fragment implements DetailFragment
         ArrayList<WordTranslationModel> wtList;
         wtList = dictionaryContentList;
 
-        if (var != 0) {
-            for (int i = 0; i < var; i++) {
-                Dictionary tempDictionary = new Dictionary();
-                if (wtList.get(wtList.size() - var + i).getWord() != null && wtList.get(wtList.size() - var + i).getTranslation() != null) {
-                    tempDictionary.setDictionaryName(name);
-                    tempDictionary.setWord(wtList.get(wtList.size() - var + i).getWord());
-                    tempDictionary.setTranslation(wtList.get(wtList.size() - var + i).getTranslation());
-                    dictionariesDatabase.dictionaryDao().insertDictionary(tempDictionary);
-                }
+        dictionariesDatabase.dictionaryDao().deleteDictionariesWithNameLike(name);
+        Dictionary dict = new Dictionary();
+        dict.setDictionaryName(name);
+        dictionariesDatabase.dictionaryDao().insertDictionary(dict);
+
+        for (int i = 0; i < wtList.size(); i++) {
+            Dictionary tempDictionary = new Dictionary();
+            if (wtList.get(i).getWord() != null && wtList.get(i).getTranslation() != null) {
+                tempDictionary.setDictionaryName(name);
+                tempDictionary.setWord(wtList.get(i).getWord());
+                tempDictionary.setTranslation(wtList.get(i).getTranslation());
+                dictionariesDatabase.dictionaryDao().insertDictionary(tempDictionary);
             }
         }
         Toast.makeText(requireContext(), "saved", Toast.LENGTH_SHORT).show();

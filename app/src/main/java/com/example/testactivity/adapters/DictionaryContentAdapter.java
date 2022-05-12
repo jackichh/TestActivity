@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.R;
-import com.example.testactivity.models.WordTranslationModel;
+import com.example.testactivity.Models.WordTranslationModel;
 
 import java.util.ArrayList;
 

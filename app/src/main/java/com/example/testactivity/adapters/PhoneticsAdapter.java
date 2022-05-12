@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.R;
 import com.example.testactivity.ViewHolders.PhoneticViewHolder;
-import com.example.testactivity.models.Phonetics;
+import com.example.testactivity.Models.Phonetics;
 
 import java.util.List;
 

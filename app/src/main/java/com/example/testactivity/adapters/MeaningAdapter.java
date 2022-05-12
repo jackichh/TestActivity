@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testactivity.R;
 import com.example.testactivity.ViewHolders.MeaningsViewHolder;
-import com.example.testactivity.models.Meanings;
+import com.example.testactivity.Models.Meanings;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.testactivity.models;
+package com.example.testactivity.Models;
 
 import java.util.List;
 

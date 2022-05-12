@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.example.testactivity.Listeners.OnFetchDataListener;
-import com.example.testactivity.models.APIResponse;
+import com.example.testactivity.Models.APIResponse;
 
 import java.util.List;
 

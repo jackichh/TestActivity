@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestActivity</string>
+    <string name="app_name">Smartery</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -18,7 +18,6 @@
     <string name="social">Social</string>
     <string name="created">Created</string>
     <string name="edit_title_of_dictionary">Edit title of dictionary</string>
-    <string name="search">Search</string>
     <string name="profile">Profile</string>
     <string name="translation">Translation</string>
     <string name="word">Word</string>
@@ -33,4 +32,9 @@
     <string name="example">Example</string>
     <string name="synonyms">Synonyms</string>
     <string name="antonyms">Antonyms</string>
+    <string name="search">Search</string>
+    <string name="user_name">User name</string>
+    <string name="number_of_creator">+380 67 103 74 76</string>
+    <string name="user">User</string>
+    <string name="username">jackichh</string>
 </resources>
