@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "9771205905",
+    "project_id": "smartery-5ae22",
+    "storage_bucket": "smartery-5ae22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9771205905:android:13f418b7e757c9995a38b0",
+        "android_client_info": {
+          "package_name": "com.example.testactivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9771205905-24u7dba8p0hpggkhdtorp0uvelgj3ecp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.testactivity",
+            "certificate_hash": "b7e2ce6e5a166a033d3ca8b192a334966082ca94"
+          }
+        },
+        {
+          "client_id": "9771205905-ihqm1a4v70qsqhh97p3cl2224ih4ei0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEK0Nk_ZRGeD3VgO1p83QVlfrJKSMarkI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9771205905-ihqm1a4v70qsqhh97p3cl2224ih4ei0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -79,7 +79,6 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-
     public void onItemClicked(int position) {
         Bundle bundle = new Bundle();
         bundle.putInt("id", position);

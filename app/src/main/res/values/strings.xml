@@ -37,4 +37,5 @@
     <string name="number_of_creator">+380 67 103 74 76</string>
     <string name="user">User</string>
     <string name="username">jackichh</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

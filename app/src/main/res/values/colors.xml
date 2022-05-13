@@ -31,4 +31,8 @@
     <color name="colorNoteColor5">#000000</color>
     <color name="colorDelete">#FF4842</color>
     <color name="colorBackground">#333333</color>
+    <color name="offWhite">#f7f6f9</color>
+
+    <color name="dialog_color_1">#FDD736</color>
+    <color name="dialog_color_2">#3B5796</color>
 </resources>

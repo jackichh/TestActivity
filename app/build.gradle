@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
+
 }
 
 android {
@@ -55,4 +57,9 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.4.2"
     implementation "com.intuit.sdp:sdp-android:1.0.6"
     implementation "com.intuit.ssp:ssp-android:1.0.6"
+
+    implementation 'com.google.firebase:firebase-core:15.0.2'
+    implementation 'com.google.firebase:firebase-ml-natural-language:22.0.0'
+    implementation 'com.google.firebase:firebase-ml-natural-language-translate-model:20.0.8'
+    implementation 'com.google.firebase:firebase-ml-natural-language-language-id-model:20.0.7'
 }

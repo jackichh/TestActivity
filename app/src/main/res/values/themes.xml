@@ -29,5 +29,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+
+        <item name="colorControlActivated">@color/dialog_color_1</item>
+
+        <item name="colorControlNormal">#4D000000</item>
+    </style>
 </resources>
 
