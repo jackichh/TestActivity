@@ -1,9 +1,11 @@
 {
   "project_info": {
     "project_number": "9771205905",
+    "firebase_url": "https://example.firebaseio.com",
     "project_id": "smartery-5ae22",
     "storage_bucket": "smartery-5ae22.appspot.com"
   },
+
   "client": [
     {
       "client_info": {

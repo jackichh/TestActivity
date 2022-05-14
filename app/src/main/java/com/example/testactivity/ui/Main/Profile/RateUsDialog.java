@@ -37,6 +37,7 @@ public class RateUsDialog extends Dialog {
 
         rateNowBtn.setOnClickListener(v -> {
             Toast.makeText(getContext(), "Thank you!", Toast.LENGTH_SHORT).show();
+            dismiss();
         });
 
         laterBtn.setOnClickListener(v -> {

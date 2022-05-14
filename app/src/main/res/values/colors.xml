@@ -35,4 +35,7 @@
 
     <color name="dialog_color_1">#FDD736</color>
     <color name="dialog_color_2">#3B5796</color>
+
+    <color name="primary">#292242</color>
+    <color name="secondary">#0DE6E3</color>
 </resources>

@@ -103,7 +103,7 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                selectedTab.setBackgroundResource(R.drawable.round_back_white10_20);
+                selectedTab.setBackgroundResource(R.drawable.round_back_white15_20);
                 selectedTab.setTypeface(null, Typeface.BOLD);
                 selectedTab.setTextColor(Color.WHITE);
 

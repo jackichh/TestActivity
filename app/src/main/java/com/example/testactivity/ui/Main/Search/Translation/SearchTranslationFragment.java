@@ -92,8 +92,7 @@ public class SearchTranslationFragment extends Fragment {
         translateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                translateTV.setVisibility(View.VISIBLE);
-                translateTV.setText("");
+
                 if (sourceText.getText().toString().isEmpty()){
                     Toast.makeText(getContext(), "Please enter text to translate", Toast.LENGTH_SHORT).show();
                 }else if (fromLanguageCode == 0){
@@ -101,6 +100,8 @@ public class SearchTranslationFragment extends Fragment {
                 }else if (toLanguageCode == 0){
                     Toast.makeText(getContext(), "Please select the language to make translation", Toast.LENGTH_SHORT).show();
                 } else {
+                    translateTV.setVisibility(View.VISIBLE);
+                    translateTV.setText("");
                     translateText(fromLanguageCode, toLanguageCode, sourceText.getText().toString());
                 }
             }

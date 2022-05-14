@@ -143,7 +143,7 @@ public class DictionaryContentAdapter extends RecyclerView.Adapter<DictionaryCon
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (WordTranslationModel item : dictContentListFull) {
-                    if(item.getWord().toLowerCase().contains(filterPattern)) {
+                    if(item.getWord().toLowerCase().contains(filterPattern) || item.getTranslation().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }

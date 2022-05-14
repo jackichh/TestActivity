@@ -24,7 +24,7 @@
                 android:src="@drawable/profile_icon_blue" />
 
             <TextView
-                android:id="@+id/userName"
+                android:id="@+id/nickNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="40dp"
-                android:background="@drawable/round_back_white10_20"
+                android:background="@drawable/round_back_white15_20"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -69,21 +69,29 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/userIcon"
+                        android:id="@+id/userProfileIcon"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="8dp"
                         android:src="@drawable/ic_person_white" />
 
                     <TextView
+                        android:id="@+id/nickName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="4dp"
-                        android:layout_toEndOf="@id/userIcon"
+                        android:layout_toEndOf="@id/userProfileIcon"
                         android:text="@string/username"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_right" />
 
                 </RelativeLayout>
 
@@ -93,21 +101,29 @@
                     android:layout_marginTop="10dp">
 
                     <ImageView
-                        android:id="@+id/emailIcon"
+                        android:id="@+id/emailProfileIcon"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="8dp"
                         android:src="@drawable/ic_email_white" />
 
                     <TextView
+                        android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="4dp"
-                        android:layout_toEndOf="@id/emailIcon"
+                        android:layout_toEndOf="@id/emailProfileIcon"
                         android:text="@string/gmail_of_creator"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_right" />
 
                 </RelativeLayout>
 
@@ -124,14 +140,22 @@
                         android:src="@drawable/ic_badge" />
 
                     <TextView
+                        android:id="@+id/full_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="4dp"
                         android:layout_toEndOf="@id/nameIcon"
-                        android:text="@string/user"
+                        android:text="Full name"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_right" />
 
                 </RelativeLayout>
 
@@ -141,21 +165,29 @@
                     android:layout_marginTop="10dp">
 
                     <ImageView
-                        android:id="@+id/phoneIcon"
+                        android:id="@+id/phoneProfileIcon"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="8dp"
                         android:src="@drawable/ic_phone_white" />
 
                     <TextView
+                        android:id="@+id/phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="4dp"
-                        android:layout_toEndOf="@id/phoneIcon"
+                        android:layout_toEndOf="@id/phoneProfileIcon"
                         android:text="@string/number_of_creator"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_right" />
 
                 </RelativeLayout>
 

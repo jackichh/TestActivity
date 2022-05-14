@@ -19,7 +19,7 @@
 
             <TextView
                 android:id="@+id/meaningTab"
-                android:background="@drawable/round_back_white10_20"
+                android:background="@drawable/round_back_white15_20"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"

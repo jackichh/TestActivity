@@ -3,17 +3,49 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Smartery/app/src/main/res/drawable-v24/ic_not_selected_email.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable-v24/ic_not_selected_password.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable-v24/round_back_white10_20.xml" value="0.3717948717948718" />
         <entry key="..\:/Smartery/app/src/main/res/drawable/background.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_arrow_left.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_arrow_right.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_badge.xml" value="0.24635416666666668" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_badge_not_selected.xml" value="0.24635416666666668" />
         <entry key="..\:/Smartery/app/src/main/res/drawable/ic_exchange.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_outline_contact_phone.xml" value="0.24635416666666668" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_outline_contact_phone_not_selected.xml" value="0.24635416666666668" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_person_outline_not_selected.xml" value="0.24635416666666668" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_person_outline_white.xml" value="0.24635416666666668" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_phone_not_selected.xml" value="0.24635416666666668" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/ic_phone_white.xml" value="0.24635416666666668" />
         <entry key="..\:/Smartery/app/src/main/res/drawable/mic_background.xml" value="0.3717948717948718" />
         <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_blue_10.xml" value="0.3717948717948718" />
         <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_brown_6.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_home_100.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_profile_100.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_search_100.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_secondary_100.xml" value="0.3717948717948718" />
         <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_while_stroke_1000.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_white10_20.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_white15_20.xml" value="0.3717948717948718" />
         <entry key="..\:/Smartery/app/src/main/res/drawable/round_back_white_1000.xml" value="0.3717948717948718" />
+        <entry key="..\:/Smartery/app/src/main/res/layout-w1240dp/activity_log_in.xml" value="0.3006802721088435" />
+        <entry key="..\:/Smartery/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.4251968503937008" />
+        <entry key="..\:/Smartery/app/src/main/res/layout-w1240dp/activity_login2.xml" value="0.453125" />
+        <entry key="..\:/Smartery/app/src/main/res/layout-w936dp/activity_login.xml" value="0.27109375" />
+        <entry key="..\:/Smartery/app/src/main/res/layout-w936dp/activity_login2.xml" value="0.27109375" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/activity_forgot_password.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/activity_log_in.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/activity_log_inn.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/activity_login.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/activity_login2.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/activity_register.xml" value="0.23020833333333332" />
         <entry key="..\:/Smartery/app/src/main/res/layout/fragment_profile.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/fragment_search_translation.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/fragment_settings.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/rate_us_dialog_layout.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/spinner_item.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/xml/root_preferences.xml" value="0.3614583333333333" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/background_splashscreen.xml" value="0.24583333333333332" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_account_box.xml" value="0.3717948717948718" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_home_black.xml" value="0.3717948717948718" />
