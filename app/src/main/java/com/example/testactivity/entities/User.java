@@ -1,9 +1,9 @@
 package com.example.testactivity.entities;
 
-public class FireBaseUser {
+public class User {
     public String fullName, email, password, phone, nickname;
 
-    public FireBaseUser(String fullName, String email, String password, String phone, String nickname) {
+    public User(String fullName, String email, String password, String phone, String nickname) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;

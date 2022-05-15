@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,12 +22,12 @@
                 android:src="@drawable/profile_icon_blue" />
 
             <TextView
-                android:id="@+id/nickNameText"
+                android:id="@+id/nickNameTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="@string/username"
+                android:text=""
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -41,7 +39,8 @@
                 android:layout_gravity="center"
                 android:text="@string/number_of_creator"
                 android:textColor="#CCFFFFFF"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
@@ -76,17 +75,18 @@
                         android:src="@drawable/ic_person_white" />
 
                     <TextView
-                        android:id="@+id/nickName"
+                        android:id="@+id/nickName2Txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="4dp"
                         android:layout_toEndOf="@id/userProfileIcon"
-                        android:text="@string/username"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/nickNameEdit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -108,22 +108,16 @@
                         android:src="@drawable/ic_email_white" />
 
                     <TextView
-                        android:id="@+id/email"
+                        android:id="@+id/emailTxT"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="4dp"
                         android:layout_toEndOf="@id/emailProfileIcon"
-                        android:text="@string/gmail_of_creator"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_right" />
 
                 </RelativeLayout>
 
@@ -140,13 +134,13 @@
                         android:src="@drawable/ic_badge" />
 
                     <TextView
-                        android:id="@+id/full_name"
+                        android:id="@+id/fullNameTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="4dp"
                         android:layout_toEndOf="@id/nameIcon"
-                        android:text="Full name"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -172,13 +166,13 @@
                         android:src="@drawable/ic_phone_white" />
 
                     <TextView
-                        android:id="@+id/phone"
+                        android:id="@+id/phoneTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="4dp"
                         android:layout_toEndOf="@id/phoneProfileIcon"
-                        android:text="@string/number_of_creator"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -213,5 +207,5 @@
 
 
         </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>

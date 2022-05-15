@@ -16,7 +16,7 @@
         <activity
             android:name=".logIn.ForgotPassword"
             android:exported="false"
-            android:theme="@style/Theme.Design.NoActionBar"/>
+            android:theme="@style/Theme.Design.NoActionBar" />
 
         <receiver
             android:name=".ui.Main.Profile.EditProfile.ProfileReceiver"
@@ -33,11 +33,6 @@
             android:name=".logIn.LogInActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.SplashActivity"
@@ -47,7 +42,13 @@
             android:name=".activities.HomeActivity"
             android:exported="true"
             android:label=""
-            android:theme="@style/Theme.TestActivity.NoActionBar" />
+            android:theme="@style/Theme.TestActivity.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

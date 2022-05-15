@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.testactivity.R;
-import com.example.testactivity.entities.FireBaseUser;
+import com.example.testactivity.entities.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -96,10 +96,10 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            FireBaseUser fireBaseUser = new FireBaseUser(fullName, email, password, phone, nickname);
+                            User user = new User(fullName, email, password, phone, nickname);
                             FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                            db.collection("users").add(fireBaseUser);
+                            db.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(user);
 
                             sendEmailVerification();
                             Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_SHORT).show();
@@ -118,58 +118,43 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-        nickNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputMethodManager.showSoftInput(nickNameEditText, InputMethodManager.SHOW_IMPLICIT);
-                    selectView("nickName");
-                }
+        nickNameEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus){
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(nickNameEditText, InputMethodManager.SHOW_IMPLICIT);
+                selectView("nickName");
             }
         });
 
-        fullNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputMethodManager.showSoftInput(fullNameEditText, InputMethodManager.SHOW_IMPLICIT);
-                    selectView("fullName");
-                }
+        fullNameEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus){
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(fullNameEditText, InputMethodManager.SHOW_IMPLICIT);
+                selectView("fullName");
             }
         });
 
-        phoneEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputMethodManager.showSoftInput(phoneEditText, InputMethodManager.SHOW_IMPLICIT);
-                    selectView("phone");
-                }
+        phoneEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus){
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(phoneEditText, InputMethodManager.SHOW_IMPLICIT);
+                selectView("phone");
             }
         });
 
-        emailEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputMethodManager.showSoftInput(emailEditText, InputMethodManager.SHOW_IMPLICIT);
-                    selectView("email");
-                }
+        emailEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus){
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(emailEditText, InputMethodManager.SHOW_IMPLICIT);
+                selectView("email");
             }
         });
 
-        passwordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputMethodManager.showSoftInput(passwordEditText, InputMethodManager.SHOW_IMPLICIT);
-                    selectView("password");
-                }
+        passwordEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus){
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(passwordEditText, InputMethodManager.SHOW_IMPLICIT);
+                selectView("password");
             }
         });
     }

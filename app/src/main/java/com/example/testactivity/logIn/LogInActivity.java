@@ -147,7 +147,7 @@ public class LogInActivity extends AppCompatActivity {
         if (firebaseUser != null) {
             if(firebaseUser.isEmailVerified())
             {
-                Toast.makeText(getApplicationContext(),"Logged In",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Signed In",Toast.LENGTH_SHORT).show();
                 finish();
                 startActivity(new Intent(LogInActivity.this, HomeActivity.class));
             }

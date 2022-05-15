@@ -86,7 +86,7 @@ public class SearchFragment extends Fragment {
         float slideTo = (tabNumber - selectedTabNumber) * selectedTab.getWidth();
 
         TranslateAnimation translateAnimation = new TranslateAnimation(0, slideTo, 0, 0);
-        translateAnimation.setDuration(100);
+        translateAnimation.setDuration(200);
 
         if(selectedTabNumber == 1){
             meaningTab.startAnimation(translateAnimation);

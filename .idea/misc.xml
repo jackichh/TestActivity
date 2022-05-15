@@ -40,11 +40,16 @@
         <entry key="..\:/Smartery/app/src/main/res/layout/activity_login.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/activity_login2.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/activity_register.xml" value="0.23020833333333332" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/fragment_edit_profile.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/fragment_edit_profile_item.xml" value="0.3484375" />
+        <entry key="..\:/Smartery/app/src/main/res/layout/fragment_parent_profile.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/fragment_profile.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/fragment_search_translation.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/fragment_settings.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/rate_us_dialog_layout.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/layout/spinner_item.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/menu/dictionary_content_menu.xml" value="0.3614583333333333" />
+        <entry key="..\:/Smartery/app/src/main/res/menu/profile_menu.xml" value="0.3614583333333333" />
         <entry key="..\:/Smartery/app/src/main/res/xml/root_preferences.xml" value="0.3614583333333333" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/background_splashscreen.xml" value="0.24583333333333332" />
         <entry key="..\:/TestActivity/app/src/main/res/drawable/ic_account_box.xml" value="0.3717948717948718" />

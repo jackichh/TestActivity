@@ -2,6 +2,7 @@ package com.example.testactivity.activities;
 
 import static androidx.navigation.Navigation.findNavController;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -19,6 +20,9 @@ import com.example.testactivity.adapters.DrawerAdapter;
 import com.example.testactivity.database.DictionariesDatabase;
 import com.example.testactivity.databinding.ActivityHomeBinding;
 import com.example.testactivity.entities.Dictionary;
+import com.example.testactivity.logIn.LogInActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +81,15 @@ public class HomeActivity extends AppCompatActivity {
 
         initListeners();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser == null){
+            startActivity(new Intent(HomeActivity.this, LogInActivity.class));
+        }
     }
 
     public void onItemClicked(int position) {
